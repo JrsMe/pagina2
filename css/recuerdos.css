@@ -1,0 +1,1393 @@
+/* =========================================================
+   RECUERDOS
+   Diseño limpio · romántico · elegante
+   ========================================================= */
+
+
+/* =========================================================
+   FONDO GENERAL
+   ========================================================= */
+
+.recuerdos-page {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 20% 15%,
+            rgba(130, 50, 80, 0.18),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 65%,
+            rgba(100, 45, 75, 0.14),
+            transparent 35%
+        ),
+        #0d090d;
+
+    color: #f5edf1;
+
+    overflow-x: hidden;
+
+}
+
+
+/* =========================================================
+   FONDO DECORATIVO
+   ========================================================= */
+
+.recuerdos-background {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 0;
+
+}
+
+
+.recuerdos-glow {
+
+    position: absolute;
+
+    width: 420px;
+
+    height: 420px;
+
+    border-radius: 50%;
+
+    filter: blur(100px);
+
+    opacity: 0.18;
+
+}
+
+
+.glow-one {
+
+    top: 5%;
+
+    left: -180px;
+
+    background: rgba(151, 67, 102, 0.45);
+
+}
+
+
+.glow-two {
+
+    right: -180px;
+
+    bottom: 15%;
+
+    background: rgba(100, 57, 105, 0.4);
+
+}
+
+
+.recuerdos-stars {
+
+    position: absolute;
+
+    inset: 0;
+
+    opacity: 0.25;
+
+    background-image:
+        radial-gradient(
+            1px 1px at 15% 20%,
+            rgba(255,255,255,0.8),
+            transparent
+        ),
+        radial-gradient(
+            1px 1px at 72% 16%,
+            rgba(255,255,255,0.7),
+            transparent
+        ),
+        radial-gradient(
+            1px 1px at 42% 68%,
+            rgba(255,255,255,0.6),
+            transparent
+        ),
+        radial-gradient(
+            1px 1px at 86% 75%,
+            rgba(255,255,255,0.7),
+            transparent
+        );
+
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.recuerdos-header {
+
+    position: relative;
+
+    z-index: 5;
+
+    width: min(1180px, 90%);
+
+    margin: 0 auto;
+
+    padding: 28px 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    border-bottom: 1px solid
+        rgba(255,255,255,0.08);
+
+}
+
+
+.recuerdos-back {
+
+    color: rgba(255,255,255,0.72);
+
+    text-decoration: none;
+
+    font-size: 0.85rem;
+
+    letter-spacing: 0.03em;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+
+}
+
+
+.recuerdos-back:hover {
+
+    color: #ffffff;
+
+    transform: translateX(-4px);
+
+}
+
+
+.recuerdos-header-title {
+
+    color: rgba(255,255,255,0.85);
+
+    font-family: Georgia, serif;
+
+    font-size: 1rem;
+
+    letter-spacing: 0.08em;
+
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.recuerdos-hero {
+
+    position: relative;
+
+    z-index: 1;
+
+    width: min(900px, 88%);
+
+    margin: 0 auto;
+
+    padding: 125px 0 85px;
+
+    text-align: center;
+
+}
+
+
+.recuerdos-hero-small {
+
+    margin-bottom: 18px;
+
+    color: #d59aae;
+
+    font-size: 0.72rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.3em;
+
+}
+
+
+.recuerdos-hero h1 {
+
+    margin: 0;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: clamp(
+        3rem,
+        7vw,
+        5.7rem
+    );
+
+    font-weight: 400;
+
+    line-height: 1;
+
+    color: #fff7fa;
+
+}
+
+
+.recuerdos-hero p {
+
+    max-width: 570px;
+
+    margin: 32px auto 0;
+
+    color: rgba(255,255,255,0.65);
+
+    font-size: 1rem;
+
+    line-height: 1.9;
+
+}
+
+
+.recuerdos-heart {
+
+    margin-top: 32px;
+
+    color: #d58ca3;
+
+    font-size: 1.35rem;
+
+}
+
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.recuerdos-intro {
+
+    position: relative;
+
+    z-index: 1;
+
+    width: min(720px, 88%);
+
+    margin: 0 auto;
+
+    padding: 20px 0 120px;
+
+    text-align: center;
+
+}
+
+
+.intro-label {
+
+    margin-bottom: 20px;
+
+    color: #c9829b;
+
+    font-size: 0.68rem;
+
+    letter-spacing: 0.28em;
+
+}
+
+
+.intro-text {
+
+    margin: 0;
+
+    color: rgba(255,255,255,0.58);
+
+    font-family: Georgia, serif;
+
+    font-size: 1.1rem;
+
+    line-height: 2;
+
+}
+
+
+/* =========================================================
+   BLOQUES DE RECUERDO
+   ========================================================= */
+
+.memory {
+
+    position: relative;
+
+    z-index: 1;
+
+    width: min(1080px, 88%);
+
+    margin: 0 auto;
+
+    padding: 90px 0;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.35fr)
+        minmax(280px, 0.65fr);
+
+    gap: 90px;
+
+    align-items: center;
+
+}
+
+
+.memory-right {
+
+    grid-template-columns:
+        minmax(280px, 0.65fr)
+        minmax(0, 1.35fr);
+
+}
+
+
+.memory-right .memory-photo {
+
+    order: 2;
+
+}
+
+
+.memory-right .memory-text {
+
+    order: 1;
+
+    text-align: right;
+
+}
+
+
+.memory-photo {
+
+    position: relative;
+
+}
+
+
+.photo-button {
+
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    border-radius: 3px;
+
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,0.35);
+
+}
+
+
+.photo-button::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 12px;
+
+    border: 1px solid
+        rgba(255,255,255,0.12);
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    transition:
+        opacity 0.45s ease;
+
+}
+
+
+.photo-button img {
+
+    display: block;
+
+    width: 100%;
+
+    height: 520px;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.7s cubic-bezier(
+            0.2,
+            0.7,
+            0.2,
+            1
+        ),
+        filter 0.5s ease;
+
+}
+
+
+.photo-overlay {
+
+    position: absolute;
+
+    inset: auto 0 0 0;
+
+    padding: 55px 25px 22px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(8,5,8,0.8),
+            transparent
+        );
+
+    color: rgba(255,255,255,0.9);
+
+    font-size: 0.78rem;
+
+    letter-spacing: 0.04em;
+
+    opacity: 0;
+
+    transform: translateY(8px);
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+
+}
+
+
+.photo-overlay span {
+
+    font-size: 1.1rem;
+
+}
+
+
+.photo-button:hover img {
+
+    transform: scale(1.035);
+
+    filter: brightness(0.85);
+
+}
+
+
+.photo-button:hover::before {
+
+    opacity: 1;
+
+}
+
+
+.photo-button:hover .photo-overlay {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+
+/* =========================================================
+   TEXTO DEL RECUERDO
+   ========================================================= */
+
+.memory-text {
+
+    padding: 20px 0;
+
+}
+
+
+.memory-number {
+
+    display: block;
+
+    margin-bottom: 22px;
+
+    color: #b66f87;
+
+    font-size: 0.68rem;
+
+    letter-spacing: 0.25em;
+
+}
+
+
+.memory-text h2 {
+
+    margin: 0;
+
+    color: #fff6f9;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: clamp(
+        1.9rem,
+        3vw,
+        2.8rem
+    );
+
+    font-weight: 400;
+
+    line-height: 1.2;
+
+}
+
+
+.memory-text p {
+
+    max-width: 360px;
+
+    margin: 25px 0 0;
+
+    color: rgba(255,255,255,0.58);
+
+    font-size: 0.95rem;
+
+    line-height: 1.9;
+
+}
+
+
+.memory-right .memory-text p {
+
+    margin-left: auto;
+
+}
+
+
+.memory-line {
+
+    display: block;
+
+    width: 45px;
+
+    height: 1px;
+
+    margin-top: 30px;
+
+    background: #a65d78;
+
+}
+
+
+.memory-right .memory-line {
+
+    margin-left: auto;
+
+}
+
+
+/* =========================================================
+   RECUERDO DESTACADO
+   ========================================================= */
+
+.memory-featured {
+
+    width: min(1080px, 88%);
+
+    margin-top: 35px;
+
+    padding-top: 130px;
+
+    padding-bottom: 130px;
+
+    grid-template-columns:
+        minmax(0, 1.5fr)
+        minmax(260px, 0.5fr);
+
+}
+
+
+.memory-featured .memory-photo img {
+
+    height: 570px;
+
+}
+
+
+.memory-featured .memory-text h2 {
+
+    font-size: clamp(
+        2rem,
+        3.5vw,
+        3.2rem
+    );
+
+}
+
+
+/* =========================================================
+   SEPARADORES
+   ========================================================= */
+
+.memory::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 0;
+
+    width: min(700px, 70%);
+
+    height: 1px;
+
+    transform: translateX(-50%);
+
+    background:
+        linear-gradient(
+            to right,
+            transparent,
+            rgba(255,255,255,0.08),
+            transparent
+        );
+
+}
+
+
+/* =========================================================
+   FRASE
+   ========================================================= */
+
+.recuerdos-quote {
+
+    position: relative;
+
+    z-index: 1;
+
+    width: min(760px, 88%);
+
+    margin: 0 auto;
+
+    padding: 140px 0;
+
+    text-align: center;
+
+}
+
+
+.quote-line {
+
+    width: 40px;
+
+    height: 1px;
+
+    margin: 0 auto 35px;
+
+    background: #a9617d;
+
+}
+
+
+.recuerdos-quote p {
+
+    margin: 0;
+
+    color: rgba(255,255,255,0.82);
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: clamp(
+        1.3rem,
+        2.5vw,
+        1.8rem
+    );
+
+    font-style: italic;
+
+    line-height: 1.8;
+
+}
+
+
+.recuerdos-quote span {
+
+    display: block;
+
+    margin-top: 25px;
+
+    color: #c9829b;
+
+    font-size: 0.72rem;
+
+    letter-spacing: 0.15em;
+
+}
+
+
+/* =========================================================
+   CIERRE
+   ========================================================= */
+
+.recuerdos-ending {
+
+    position: relative;
+
+    z-index: 1;
+
+    width: min(800px, 88%);
+
+    margin: 0 auto;
+
+    padding: 100px 0 120px;
+
+    text-align: center;
+
+}
+
+
+.ending-small {
+
+    margin-bottom: 22px;
+
+    color: #c9829b;
+
+    font-size: 0.7rem;
+
+    letter-spacing: 0.25em;
+
+    text-transform: uppercase;
+
+}
+
+
+.recuerdos-ending h2 {
+
+    margin: 0;
+
+    color: #fff4f7;
+
+    font-family: Georgia, serif;
+
+    font-size: clamp(
+        2rem,
+        4vw,
+        3.3rem
+    );
+
+    font-weight: 400;
+
+    line-height: 1.3;
+
+}
+
+
+.ending-heart {
+
+    margin-top: 35px;
+
+    color: #c87894;
+
+    font-size: 1.4rem;
+
+}
+
+
+/* =========================================================
+   SIGUIENTE SECCIÓN
+   ========================================================= */
+
+.recuerdos-next {
+
+    position: relative;
+
+    z-index: 1;
+
+    width: min(760px, 88%);
+
+    margin: 0 auto;
+
+    padding: 80px 20px 120px;
+
+    text-align: center;
+
+}
+
+
+.recuerdos-next-line {
+
+    width: 45px;
+
+    height: 1px;
+
+    margin: 0 auto 32px;
+
+    background: #a65d78;
+
+}
+
+
+.recuerdos-next p {
+
+    max-width: 560px;
+
+    margin: 0 auto 30px;
+
+    color: rgba(255,255,255,0.55);
+
+    font-family: Georgia, serif;
+
+    font-size: 1rem;
+
+    line-height: 1.9;
+
+}
+
+
+.recuerdos-next-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 48px;
+
+    padding: 0 25px;
+
+    border: 1px solid
+        rgba(207,130,155,0.45);
+
+    border-radius: 30px;
+
+    color: #f7e9ee;
+
+    background:
+        rgba(128,62,85,0.16);
+
+    text-decoration: none;
+
+    font-size: 0.8rem;
+
+    letter-spacing: 0.03em;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+
+}
+
+
+.recuerdos-next-button:hover {
+
+    background:
+        rgba(157,77,104,0.28);
+
+    border-color:
+        rgba(207,130,155,0.7);
+
+    transform: translateY(-2px);
+
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.recuerdos-footer {
+
+    position: relative;
+
+    z-index: 1;
+
+    padding: 25px;
+
+    border-top: 1px solid
+        rgba(255,255,255,0.06);
+
+    text-align: center;
+
+    color: rgba(255,255,255,0.32);
+
+    font-size: 0.7rem;
+
+    letter-spacing: 0.08em;
+
+}
+
+
+/* =========================================================
+   LIGHTBOX
+   ========================================================= */
+
+.recuerdos-lightbox {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 40px;
+
+    background:
+        rgba(5,3,5,0.94);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.35s ease,
+        visibility 0.35s ease;
+
+}
+
+
+.recuerdos-lightbox.lightbox-visible {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+}
+
+
+.lightbox-content {
+
+    position: relative;
+
+    max-width: min(1000px, 92vw);
+
+    max-height: 90vh;
+
+    text-align: center;
+
+    transform:
+        scale(0.96)
+        translateY(10px);
+
+    transition:
+        transform 0.4s ease;
+
+}
+
+
+.lightbox-visible .lightbox-content {
+
+    transform:
+        scale(1)
+        translateY(0);
+
+}
+
+
+.lightbox-content img {
+
+    display: block;
+
+    max-width: 100%;
+
+    max-height: 78vh;
+
+    object-fit: contain;
+
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,0.5);
+
+}
+
+
+.lightbox-content p {
+
+    margin: 18px 0 0;
+
+    color: rgba(255,255,255,0.65);
+
+    font-family: Georgia, serif;
+
+    font-size: 0.9rem;
+
+    font-style: italic;
+
+}
+
+
+.lightbox-close {
+
+    position: absolute;
+
+    top: 25px;
+
+    right: 30px;
+
+    z-index: 2;
+
+    width: 42px;
+
+    height: 42px;
+
+    border: 1px solid
+        rgba(255,255,255,0.2);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,0.04);
+
+    color: rgba(255,255,255,0.8);
+
+    font-size: 1.7rem;
+
+    font-weight: 200;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+
+}
+
+
+.lightbox-close:hover {
+
+    background:
+        rgba(255,255,255,0.1);
+
+    transform: rotate(90deg);
+
+}
+
+
+body.lightbox-open {
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    .memory,
+    .memory-right,
+    .memory-featured {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 35px;
+
+        padding: 70px 0;
+
+    }
+
+
+    .memory-right .memory-photo {
+
+        order: 1;
+
+    }
+
+
+    .memory-right .memory-text {
+
+        order: 2;
+
+        text-align: left;
+
+    }
+
+
+    .memory-right .memory-text p {
+
+        margin-left: 0;
+
+    }
+
+
+    .memory-right .memory-line {
+
+        margin-left: 0;
+
+    }
+
+
+    .photo-button img,
+    .memory-featured .memory-photo img {
+
+        height: 460px;
+
+    }
+
+}
+
+
+/* =========================================================
+   MÓVIL
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .recuerdos-header {
+
+        padding: 20px 0;
+
+    }
+
+
+    .recuerdos-header-title {
+
+        font-size: 0.85rem;
+
+    }
+
+
+    .recuerdos-hero {
+
+        padding:
+            90px 0
+            65px;
+
+    }
+
+
+    .recuerdos-hero-small {
+
+        font-size: 0.6rem;
+
+        letter-spacing: 0.22em;
+
+    }
+
+
+    .recuerdos-hero h1 {
+
+        font-size: 3rem;
+
+    }
+
+
+    .recuerdos-hero p {
+
+        margin-top: 25px;
+
+        font-size: 0.9rem;
+
+        line-height: 1.8;
+
+    }
+
+
+    .recuerdos-intro {
+
+        padding-bottom: 70px;
+
+    }
+
+
+    .intro-text {
+
+        font-size: 0.95rem;
+
+    }
+
+
+    .memory,
+    .memory-featured {
+
+        width: 90%;
+
+        padding: 55px 0;
+
+    }
+
+
+    .photo-button img,
+    .memory-featured .memory-photo img {
+
+        height: 330px;
+
+    }
+
+
+    .photo-overlay {
+
+        opacity: 1;
+
+        transform: none;
+
+        padding:
+            45px 17px
+            15px;
+
+        font-size: 0.68rem;
+
+    }
+
+
+    .memory-text {
+
+        padding: 5px 0;
+
+    }
+
+
+    .memory-number {
+
+        margin-bottom: 15px;
+
+    }
+
+
+    .memory-text h2 {
+
+        font-size: 1.9rem;
+
+    }
+
+
+    .memory-text p {
+
+        margin-top: 18px;
+
+        font-size: 0.88rem;
+
+        line-height: 1.8;
+
+    }
+
+
+    .recuerdos-quote {
+
+        padding: 90px 0;
+
+    }
+
+
+    .recuerdos-quote p {
+
+        font-size: 1.15rem;
+
+    }
+
+
+    .recuerdos-ending {
+
+        padding:
+            70px 0
+            80px;
+
+    }
+
+
+    .recuerdos-ending h2 {
+
+        font-size: 2rem;
+
+    }
+
+
+    .recuerdos-next {
+
+        padding:
+            60px 10px
+            90px;
+
+    }
+
+
+    .recuerdos-next p {
+
+        font-size: 0.9rem;
+
+    }
+
+
+    .recuerdos-next-button {
+
+        width: 100%;
+
+    }
+
+
+    .recuerdos-lightbox {
+
+        padding: 20px;
+
+    }
+
+
+    .lightbox-close {
+
+        top: 15px;
+
+        right: 15px;
+
+        width: 38px;
+
+        height: 38px;
+
+    }
+
+
+    .lightbox-content img {
+
+        max-height: 72vh;
+
+    }
+
+}

@@ -1,0 +1,691 @@
+/* =========================================================
+   CARTA.CSS
+   Sección: Carta para Brizly
+   ========================================================= */
+
+.carta-page {
+    --letter-bg: #0d080b;
+    --letter-paper: #f4eee9;
+    --letter-paper-soft: #eee5df;
+
+    --letter-rose: #c9849c;
+    --letter-wine: #7c3f53;
+
+    --letter-dark: #34272d;
+    --letter-text: #493b41;
+    --letter-muted: #85747c;
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(201, 132, 156, 0.10),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(124, 63, 83, 0.10),
+            transparent 32%
+        ),
+        linear-gradient(
+            180deg,
+            #0d080b 0%,
+            #11090d 50%,
+            #090608 100%
+        );
+
+    color: #f7f1f3;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.carta-header {
+    width: min(1100px, 90%);
+
+    margin: 0 auto;
+
+    padding: 28px 0 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+.carta-back {
+    color: rgba(190, 177, 183, 0.75);
+
+    text-decoration: none;
+
+    font-size: 0.82rem;
+
+    letter-spacing: 0.04em;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.carta-back:hover {
+    color: var(--letter-rose);
+
+    transform: translateX(-4px);
+}
+
+.carta-header-title {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 1.15rem;
+
+    font-weight: 500;
+
+    letter-spacing: 0.08em;
+
+    color: rgba(248, 241, 244, 0.75);
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.carta-hero {
+    width: min(850px, 88%);
+
+    margin: 0 auto;
+
+    padding: 85px 20px 65px;
+
+    text-align: center;
+}
+
+.carta-label {
+    display: inline-block;
+
+    margin-bottom: 18px;
+
+    font-size: 0.7rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.28em;
+
+    color: var(--letter-rose);
+}
+
+.carta-hero h1 {
+    margin: 0;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(3.7rem, 8vw, 6.3rem);
+
+    line-height: 0.92;
+
+    font-weight: 400;
+
+    color: #f8f1f4;
+}
+
+.carta-hero h1 span {
+    color: var(--letter-rose);
+}
+
+.carta-hero p {
+    max-width: 600px;
+
+    margin: 28px auto 0;
+
+    font-size: 0.9rem;
+
+    line-height: 1.9;
+
+    color: rgba(177, 163, 170, 0.8);
+}
+
+
+/* =========================================================
+   DETALLE DECORATIVO
+   ========================================================= */
+
+.carta-symbol {
+    width: 44px;
+    height: 44px;
+
+    margin: 28px auto 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(201, 132, 156, 0.28);
+
+    border-radius: 50%;
+
+    color: var(--letter-rose);
+
+    font-size: 1rem;
+
+    animation: cartaFloat 4s ease-in-out infinite;
+}
+
+@keyframes cartaFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+
+}
+
+
+/* =========================================================
+   CONTENEDOR DE LA CARTA
+   ========================================================= */
+
+.carta-wrapper {
+    width: min(820px, 90%);
+
+    margin: 0 auto;
+
+    position: relative;
+}
+
+
+/* =========================================================
+   DECORACIÓN ALREDEDOR
+   ========================================================= */
+
+.carta-decoration {
+    position: absolute;
+
+    width: 120px;
+    height: 120px;
+
+    border: 1px solid rgba(201, 132, 156, 0.10);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+.carta-decoration.one {
+    top: -50px;
+    left: -80px;
+}
+
+.carta-decoration.two {
+    bottom: -50px;
+    right: -80px;
+}
+
+
+/* =========================================================
+   HOJA
+   ========================================================= */
+
+.carta-paper {
+    position: relative;
+
+    padding: 65px 75px 70px;
+
+    border-radius: 3px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.45),
+            transparent 40%
+        ),
+        linear-gradient(
+            180deg,
+            var(--letter-paper),
+            var(--letter-paper-soft)
+        );
+
+    color: var(--letter-text);
+
+    box-shadow:
+        0 35px 90px rgba(0, 0, 0, 0.38),
+        0 5px 25px rgba(0, 0, 0, 0.18);
+
+    transform: rotate(-0.35deg);
+
+    overflow: hidden;
+}
+
+
+/* textura muy sutil */
+
+.carta-paper::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            rgba(80, 50, 60, 0.018) 0,
+            rgba(80, 50, 60, 0.018) 1px,
+            transparent 1px,
+            transparent 4px
+        );
+
+    pointer-events: none;
+}
+
+
+/* línea lateral decorativa */
+
+.carta-paper::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 28px;
+
+    width: 1px;
+    height: 100%;
+
+    background: rgba(124, 63, 83, 0.10);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   ENCABEZADO DE LA CARTA
+   ========================================================= */
+
+.carta-to {
+    position: relative;
+
+    margin-bottom: 42px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 1.45rem;
+
+    color: var(--letter-wine);
+}
+
+.carta-to span {
+    font-style: italic;
+}
+
+
+/* =========================================================
+   CUERPO
+   ========================================================= */
+
+.carta-body {
+    position: relative;
+}
+
+.carta-body p {
+    margin: 0 0 25px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 1.3rem;
+
+    line-height: 1.85;
+
+    color: var(--letter-text);
+}
+
+.carta-body p:first-child::first-letter {
+    font-size: 3.8rem;
+
+    float: left;
+
+    line-height: 0.75;
+
+    padding-right: 8px;
+
+    color: var(--letter-wine);
+}
+
+
+/* =========================================================
+   FRASE DESTACADA
+   ========================================================= */
+
+.carta-highlight {
+    margin: 42px 0;
+
+    padding: 25px 28px;
+
+    border-left: 2px solid var(--letter-rose);
+
+    background: rgba(124, 63, 83, 0.045);
+}
+
+.carta-highlight p {
+    margin: 0;
+
+    font-size: 1.45rem;
+
+    font-style: italic;
+
+    color: var(--letter-wine);
+}
+
+
+/* =========================================================
+   FIRMA
+   ========================================================= */
+
+.carta-signature {
+    margin-top: 48px;
+
+    text-align: right;
+}
+
+.carta-signature p {
+    margin: 0;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 1.35rem;
+
+    color: var(--letter-text);
+}
+
+.carta-signature strong {
+    display: block;
+
+    margin-top: 8px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 2rem;
+
+    font-weight: 500;
+
+    color: var(--letter-wine);
+}
+
+.carta-signature span {
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 0.72rem;
+
+    letter-spacing: 0.1em;
+
+    color: var(--letter-muted);
+}
+
+
+/* =========================================================
+   SELLO
+   ========================================================= */
+
+.carta-seal {
+    position: absolute;
+
+    bottom: 35px;
+    left: 38px;
+
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(124, 63, 83, 0.25);
+
+    border-radius: 50%;
+
+    color: var(--letter-wine);
+
+    font-size: 1.1rem;
+
+    opacity: 0.65;
+}
+
+
+/* =========================================================
+   FRASE DESPUÉS DE LA CARTA
+   ========================================================= */
+
+.carta-after {
+    width: min(700px, 88%);
+
+    margin: 105px auto 0;
+
+    text-align: center;
+}
+
+.carta-after-line {
+    width: 50px;
+    height: 1px;
+
+    margin: 0 auto 28px;
+
+    background: rgba(201, 132, 156, 0.42);
+}
+
+.carta-after p {
+    margin: 0;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(1.7rem, 4vw, 2.6rem);
+
+    line-height: 1.45;
+
+    color: rgba(248, 241, 244, 0.9);
+}
+
+.carta-after span {
+    display: block;
+
+    margin-top: 20px;
+
+    font-size: 0.7rem;
+
+    letter-spacing: 0.16em;
+
+    color: rgba(152, 139, 145, 0.75);
+}
+
+
+/* =========================================================
+   SIGUIENTE APARTADO
+   ========================================================= */
+
+.carta-next {
+    width: min(760px, 88%);
+
+    margin: 100px auto 0;
+
+    padding: 90px 20px 110px;
+
+    text-align: center;
+}
+
+.carta-next-line {
+    width: 55px;
+    height: 1px;
+
+    margin: 0 auto 28px;
+
+    background: rgba(201, 132, 156, 0.4);
+}
+
+.carta-next p {
+    max-width: 600px;
+
+    margin: 0 auto 30px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 1.5rem;
+
+    line-height: 1.6;
+
+    color: rgba(248, 241, 244, 0.75);
+}
+
+.carta-next-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 13px 25px;
+
+    border: 1px solid rgba(201, 132, 156, 0.3);
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    color: #f8f1f4;
+
+    text-decoration: none;
+
+    font-size: 0.75rem;
+
+    letter-spacing: 0.08em;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.carta-next-button:hover {
+    transform: translateY(-3px);
+
+    background: rgba(201, 132, 156, 0.08);
+
+    border-color: rgba(201, 132, 156, 0.55);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.carta-footer {
+    padding: 0 20px 35px;
+
+    text-align: center;
+
+    font-size: 0.7rem;
+
+    letter-spacing: 0.08em;
+
+    color: rgba(152, 139, 145, 0.6);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .carta-paper {
+        padding: 50px 35px 60px;
+    }
+
+    .carta-paper::after {
+        left: 18px;
+    }
+
+    .carta-seal {
+        left: 25px;
+        bottom: 25px;
+    }
+
+    .carta-body p {
+        font-size: 1.18rem;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .carta-header {
+        padding-top: 20px;
+    }
+
+    .carta-header-title {
+        font-size: 0.95rem;
+    }
+
+    .carta-hero {
+        padding: 65px 10px 50px;
+    }
+
+    .carta-hero h1 {
+        font-size: 3.5rem;
+    }
+
+    .carta-hero p {
+        font-size: 0.84rem;
+    }
+
+    .carta-paper {
+        padding: 45px 28px 70px;
+    }
+
+    .carta-body p {
+        font-size: 1.12rem;
+        line-height: 1.75;
+    }
+
+    .carta-highlight {
+        margin: 35px 0;
+
+        padding: 20px 20px;
+    }
+
+    .carta-highlight p {
+        font-size: 1.25rem;
+    }
+
+    .carta-signature {
+        margin-top: 40px;
+    }
+
+    .carta-signature strong {
+        font-size: 1.8rem;
+    }
+
+    .carta-after {
+        margin-top: 80px;
+    }
+
+    .carta-next {
+        margin-top: 70px;
+
+        padding: 70px 10px 90px;
+    }
+
+    .carta-next p {
+        font-size: 1.3rem;
+    }
+
+}
