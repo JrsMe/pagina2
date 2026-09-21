@@ -1,0 +1,634 @@
+/* =========================================================
+   RAZONES.CSS
+   Sección: Razones por las que te amo
+   ========================================================= */
+
+.razones-page {
+    --reason-bg: #10090d;
+    --reason-bg-soft: #180d13;
+    --reason-card: rgba(255, 255, 255, 0.045);
+
+    --reason-pink: #e8a0b8;
+    --reason-rose: #c97996;
+
+    --reason-white: #f8f2f4;
+    --reason-text: #d8cbd0;
+    --reason-muted: #988b91;
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(201, 121, 150, 0.12),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 55%,
+            rgba(232, 160, 184, 0.07),
+            transparent 30%
+        ),
+        linear-gradient(
+            180deg,
+            #10090d 0%,
+            #120a0f 50%,
+            #0c070a 100%
+        );
+
+    color: var(--reason-white);
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.razones-header {
+    width: min(1100px, 90%);
+
+    margin: 0 auto;
+
+    padding: 28px 0 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+.razones-back {
+    color: var(--reason-muted);
+
+    text-decoration: none;
+
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.razones-back:hover {
+    color: var(--reason-pink);
+
+    transform: translateX(-4px);
+}
+
+.razones-header-title {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 1.15rem;
+    font-weight: 500;
+
+    letter-spacing: 0.08em;
+
+    color: rgba(248, 242, 244, 0.75);
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.razones-hero {
+    width: min(850px, 88%);
+
+    margin: 0 auto;
+
+    padding: 90px 20px 65px;
+
+    text-align: center;
+}
+
+.razones-label {
+    display: inline-block;
+
+    margin-bottom: 18px;
+
+    font-size: 0.7rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.28em;
+
+    color: var(--reason-pink);
+}
+
+.razones-hero h1 {
+    margin: 0;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(3.7rem, 8vw, 6.5rem);
+
+    line-height: 0.9;
+
+    font-weight: 400;
+
+    color: var(--reason-white);
+
+    text-shadow:
+        0 0 35px rgba(232, 160, 184, 0.10);
+}
+
+.razones-hero h1 span {
+    color: var(--reason-pink);
+}
+
+.razones-hero p {
+    max-width: 650px;
+
+    margin: 30px auto 0;
+
+    font-size: 0.92rem;
+
+    line-height: 1.9;
+
+    color: var(--reason-muted);
+}
+
+
+/* =========================================================
+   CORAZÓN
+   ========================================================= */
+
+.razones-heart {
+    width: 45px;
+    height: 45px;
+
+    margin: 30px auto 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(232, 160, 184, 0.25);
+
+    border-radius: 50%;
+
+    color: var(--reason-pink);
+
+    font-size: 1rem;
+
+    animation: reasonHeart 4s ease-in-out infinite;
+}
+
+@keyframes reasonHeart {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+
+}
+
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.razones-intro {
+    width: min(720px, 88%);
+
+    margin: 0 auto 65px;
+
+    text-align: center;
+}
+
+.razones-intro-line {
+    width: 45px;
+    height: 1px;
+
+    margin: 0 auto 25px;
+
+    background: rgba(232, 160, 184, 0.4);
+}
+
+.razones-intro p {
+    margin: 0;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(1.6rem, 3vw, 2.25rem);
+
+    line-height: 1.45;
+
+    color: rgba(248, 242, 244, 0.9);
+}
+
+
+/* =========================================================
+   CONTENEDOR DE RAZONES
+   ========================================================= */
+
+.razones-content {
+    width: min(1050px, 90%);
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   GRID
+   ========================================================= */
+
+.razones-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+
+/* =========================================================
+   TARJETAS
+   ========================================================= */
+
+.razon-card {
+    position: relative;
+
+    min-height: 220px;
+
+    padding: 34px 32px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.065);
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.055),
+            rgba(255, 255, 255, 0.02)
+        );
+
+    backdrop-filter: blur(12px);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.4s ease,
+        border-color 0.4s ease,
+        background 0.4s ease;
+}
+
+.razon-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 130px;
+    height: 130px;
+
+    top: -70px;
+    right: -60px;
+
+    border-radius: 50%;
+
+    background: rgba(232, 160, 184, 0.07);
+
+    transition:
+        transform 0.5s ease;
+}
+
+.razon-card:hover {
+    transform: translateY(-6px);
+
+    border-color: rgba(232, 160, 184, 0.22);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(232, 160, 184, 0.075),
+            rgba(255, 255, 255, 0.025)
+        );
+}
+
+.razon-card:hover::before {
+    transform: scale(1.5);
+}
+
+
+/* =========================================================
+   NÚMERO
+   ========================================================= */
+
+.razon-number {
+    margin-bottom: 17px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 1rem;
+
+    letter-spacing: 0.08em;
+
+    color: var(--reason-rose);
+
+    opacity: 0.9;
+}
+
+
+/* =========================================================
+   ICONO
+   ========================================================= */
+
+.razon-icon {
+    position: absolute;
+
+    top: 30px;
+    right: 30px;
+
+    font-size: 1rem;
+
+    color: rgba(232, 160, 184, 0.35);
+}
+
+
+/* =========================================================
+   TEXTO DE LAS RAZONES
+   ========================================================= */
+
+.razon-card h2 {
+    margin: 0 0 12px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 2rem;
+
+    font-weight: 500;
+
+    color: var(--reason-white);
+}
+
+.razon-card p {
+    max-width: 450px;
+
+    margin: 0;
+
+    font-size: 0.8rem;
+
+    line-height: 1.8;
+
+    color: var(--reason-muted);
+}
+
+
+/* =========================================================
+   RAZÓN ESPECIAL
+   ========================================================= */
+
+.razon-card.special {
+    grid-column: span 2;
+
+    min-height: 280px;
+
+    text-align: center;
+
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(232, 160, 184, 0.08),
+            transparent 65%
+        ),
+        rgba(255, 255, 255, 0.035);
+}
+
+.razon-card.special .razon-number {
+    color: var(--reason-pink);
+}
+
+.razon-card.special h2 {
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+}
+
+.razon-card.special p {
+    max-width: 600px;
+}
+
+
+/* =========================================================
+   FRASE FINAL
+   ========================================================= */
+
+.razones-quote {
+    width: min(750px, 90%);
+
+    margin: 110px auto 0;
+
+    text-align: center;
+}
+
+.razones-quote-line {
+    width: 50px;
+    height: 1px;
+
+    margin: 0 auto 28px;
+
+    background: rgba(232, 160, 184, 0.45);
+}
+
+.razones-quote p {
+    margin: 0;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(1.8rem, 4vw, 2.7rem);
+
+    line-height: 1.4;
+
+    color: rgba(248, 242, 244, 0.9);
+}
+
+.razones-quote span {
+    display: block;
+
+    margin-top: 20px;
+
+    font-size: 0.7rem;
+
+    letter-spacing: 0.15em;
+
+    color: var(--reason-muted);
+}
+
+
+/* =========================================================
+   TRANSICIÓN A CARTA
+   ========================================================= */
+
+.razones-next {
+    width: min(760px, 88%);
+
+    margin: 100px auto 0;
+
+    padding: 90px 20px 110px;
+
+    text-align: center;
+}
+
+.razones-next-line {
+    width: 55px;
+    height: 1px;
+
+    margin: 0 auto 28px;
+
+    background: rgba(232, 160, 184, 0.4);
+}
+
+.razones-next p {
+    max-width: 600px;
+
+    margin: 0 auto 30px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 1.5rem;
+
+    line-height: 1.6;
+
+    color: rgba(248, 242, 244, 0.75);
+}
+
+.razones-next-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 13px 25px;
+
+    border: 1px solid rgba(232, 160, 184, 0.3);
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    color: var(--reason-white);
+
+    text-decoration: none;
+
+    font-size: 0.75rem;
+
+    letter-spacing: 0.08em;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.razones-next-button:hover {
+    transform: translateY(-3px);
+
+    background: rgba(232, 160, 184, 0.08);
+
+    border-color: rgba(232, 160, 184, 0.55);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.razones-footer {
+    padding: 0 20px 35px;
+
+    text-align: center;
+
+    font-size: 0.7rem;
+
+    letter-spacing: 0.08em;
+
+    color: rgba(152, 139, 145, 0.6);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 750px) {
+
+    .razones-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .razon-card.special {
+        grid-column: span 1;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .razones-header {
+        padding-top: 20px;
+    }
+
+    .razones-header-title {
+        font-size: 0.95rem;
+    }
+
+    .razones-hero {
+        padding: 65px 10px 50px;
+    }
+
+    .razones-hero h1 {
+        font-size: 3.5rem;
+    }
+
+    .razones-hero p {
+        font-size: 0.84rem;
+    }
+
+    .razones-intro {
+        margin-bottom: 45px;
+    }
+
+    .razon-card {
+        min-height: 200px;
+
+        padding: 30px 25px;
+    }
+
+    .razon-card h2 {
+        font-size: 1.8rem;
+    }
+
+    .razon-card.special {
+        min-height: 250px;
+    }
+
+    .razones-quote {
+        margin-top: 80px;
+    }
+
+    .razones-next {
+        margin-top: 70px;
+
+        padding: 70px 10px 90px;
+    }
+
+    .razones-next p {
+        font-size: 1.3rem;
+    }
+
+}

@@ -1,0 +1,1684 @@
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    min-height: 100vh;
+
+    color: #f7edf1;
+    background: #0c080d;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    overflow-x: hidden;
+}
+
+
+a {
+    color: inherit;
+}
+
+
+button {
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   PANTALLA DE BIENVENIDA
+   ========================================================= */
+
+.welcome-screen {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 42%,
+            rgba(125, 49, 78, 0.22),
+            transparent 38%
+        ),
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(92, 45, 77, 0.13),
+            transparent 32%
+        ),
+        #0c080d;
+
+    transition:
+        opacity 0.7s ease,
+        visibility 0.7s ease;
+}
+
+
+.welcome-hidden {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   BRILLOS DE FONDO
+   ========================================================= */
+
+.welcome-glow {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(70px);
+
+    pointer-events: none;
+
+    opacity: 0.25;
+}
+
+
+.welcome-glow-one {
+
+    width: 240px;
+    height: 240px;
+
+    top: 12%;
+    left: 8%;
+
+    background: rgba(151, 63, 97, 0.20);
+}
+
+
+.welcome-glow-two {
+
+    width: 280px;
+    height: 280px;
+
+    right: 5%;
+    bottom: 8%;
+
+    background: rgba(92, 48, 91, 0.18);
+}
+
+
+/* =========================================================
+   ESTRELLAS
+   ========================================================= */
+
+.welcome-stars {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+}
+
+
+.welcome-stars span {
+
+    position: absolute;
+
+    color: rgba(255, 218, 230, 0.20);
+
+    font-family: Georgia, serif;
+
+    animation:
+        welcomeStar 5s ease-in-out infinite;
+}
+
+
+.welcome-stars span:nth-child(1) {
+    top: 18%;
+    left: 18%;
+    font-size: 0.8rem;
+}
+
+
+.welcome-stars span:nth-child(2) {
+    top: 30%;
+    left: 9%;
+    font-size: 0.65rem;
+    animation-delay: 0.7s;
+}
+
+
+.welcome-stars span:nth-child(3) {
+    top: 15%;
+    right: 17%;
+    font-size: 1rem;
+    animation-delay: 1.2s;
+}
+
+
+.welcome-stars span:nth-child(4) {
+    top: 37%;
+    right: 10%;
+    font-size: 0.55rem;
+    animation-delay: 1.8s;
+}
+
+
+.welcome-stars span:nth-child(5) {
+    bottom: 24%;
+    left: 13%;
+    font-size: 0.8rem;
+    animation-delay: 2.2s;
+}
+
+
+.welcome-stars span:nth-child(6) {
+    bottom: 17%;
+    left: 27%;
+    font-size: 0.55rem;
+    animation-delay: 2.8s;
+}
+
+
+.welcome-stars span:nth-child(7) {
+    bottom: 21%;
+    right: 18%;
+    font-size: 0.9rem;
+    animation-delay: 3.2s;
+}
+
+
+@keyframes welcomeStar {
+
+    0%,
+    100% {
+        opacity: 0.18;
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: 0.55;
+        transform: translateY(-5px);
+    }
+
+}
+
+
+/* =========================================================
+   CONTENIDO BIENVENIDA
+   ========================================================= */
+
+.welcome-content {
+
+    position: relative;
+
+    z-index: 3;
+
+    width: min(620px, 88%);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    transform: translateY(-8px);
+}
+
+
+.welcome-small {
+
+    margin-bottom: 9px;
+
+    color: #c9829b;
+
+    font-size: 0.64rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.27em;
+}
+
+
+.welcome-content h1 {
+
+    margin: 0;
+
+    color: #fff6f9;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(3.5rem, 8vw, 6rem);
+
+    font-weight: 400;
+
+    line-height: 0.9;
+
+    letter-spacing: -0.045em;
+}
+
+
+.welcome-line {
+
+    width: 38px;
+
+    height: 1px;
+
+    margin: 15px auto 13px;
+
+    background:
+        rgba(203, 123, 150, 0.75);
+}
+
+
+.welcome-ranita {
+
+    color:
+        rgba(255, 255, 255, 0.68);
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 0.9rem;
+
+    line-height: 1;
+
+    letter-spacing: 0.04em;
+}
+
+
+.welcome-description {
+
+    max-width: 470px;
+
+    margin: 17px auto 21px;
+
+    color:
+        rgba(255, 255, 255, 0.58);
+
+    font-size: 0.9rem;
+
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   BOTÓN ENTRAR
+   ========================================================= */
+
+.enter-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 46px;
+
+    padding: 0 25px;
+
+    border:
+        1px solid
+        rgba(207, 130, 155, 0.45);
+
+    border-radius: 30px;
+
+    color: #f7e9ee;
+
+    background:
+        rgba(128, 62, 85, 0.16);
+
+    text-decoration: none;
+
+    font-size: 0.76rem;
+
+    letter-spacing: 0.03em;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.enter-button:hover {
+
+    background:
+        rgba(145, 70, 96, 0.28);
+
+    border-color:
+        rgba(218, 142, 166, 0.70);
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 10px 30px
+        rgba(119, 43, 72, 0.16);
+}
+
+
+/* =========================================================
+   CORAZÓN DEBAJO DEL BOTÓN
+   ========================================================= */
+
+.welcome-heart {
+
+    margin-top: 17px;
+
+    color: #c87894;
+
+    font-size: 1.15rem;
+
+    animation:
+        welcomeHeartPulse
+        3s ease-in-out infinite;
+}
+
+
+@keyframes welcomeHeartPulse {
+
+    0%,
+    100% {
+        opacity: 0.55;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.08);
+    }
+
+}
+
+
+/* =========================================================
+   FLECHAS HACIA EL BOTÓN SECRETO
+   ========================================================= */
+
+.hidden-button-guide {
+
+    position: relative;
+
+    width: 55px;
+
+    height: 52px;
+
+    margin-top: 4px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    pointer-events: none;
+}
+
+
+.guide-arrow {
+
+    display: block;
+
+    height: 13px;
+
+    color:
+        rgba(200, 120, 148, 0.28);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 1.15rem;
+
+    font-weight: 300;
+
+    line-height: 13px;
+
+    transform:
+        scaleX(1.35);
+
+    animation:
+        guideArrow
+        2.4s
+        ease-in-out
+        infinite;
+}
+
+
+.guide-arrow:nth-child(1) {
+
+    animation-delay: 0s;
+
+    opacity: 0.22;
+}
+
+
+.guide-arrow:nth-child(2) {
+
+    animation-delay: 0.18s;
+
+    opacity: 0.30;
+}
+
+
+.guide-arrow:nth-child(3) {
+
+    animation-delay: 0.36s;
+
+    opacity: 0.38;
+}
+
+
+@keyframes guideArrow {
+
+    0%,
+    100% {
+        transform:
+            translateY(-2px)
+            scaleX(1.35);
+    }
+
+    50% {
+        transform:
+            translateY(4px)
+            scaleX(1.35);
+    }
+
+}
+
+
+/* =========================================================
+   BOTÓN SECRETO
+   ========================================================= */
+
+.secret-button {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 34px;
+
+    height: 34px;
+
+    margin-top: -2px;
+
+    border:
+        1px solid
+        rgba(200, 120, 148, 0.10);
+
+    border-radius: 50%;
+
+    color:
+        rgba(255, 220, 230, 0.16);
+
+    background:
+        rgba(128, 62, 85, 0.035);
+
+    font-size: 0.85rem;
+
+    line-height: 1;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    opacity: 0.16;
+
+    transition:
+        opacity 0.4s ease,
+        border-color 0.4s ease,
+        background 0.4s ease,
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+
+.secret-button:hover {
+
+    opacity: 0.85;
+
+    border-color:
+        rgba(200, 120, 148, 0.48);
+
+    background:
+        rgba(128, 62, 85, 0.16);
+
+    color:
+        rgba(255, 225, 235, 0.90);
+
+    transform:
+        scale(1.10);
+
+    box-shadow:
+        0 0 12px
+        rgba(190, 91, 125, 0.16),
+
+        0 0 28px
+        rgba(190, 91, 125, 0.08);
+}
+
+
+.secret-button::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -5px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(200, 120, 148, 0.06);
+
+    opacity: 0;
+
+    transform:
+        scale(0.8);
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+}
+
+
+.secret-button:hover::after {
+
+    opacity: 1;
+
+    transform:
+        scale(1);
+
+    animation:
+        secretGlow
+        2s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes secretGlow {
+
+    0%,
+    100% {
+        opacity: 0.25;
+    }
+
+    50% {
+        opacity: 0.65;
+    }
+
+}
+
+
+/* =========================================================
+   HOME
+   ========================================================= */
+
+.home-screen {
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(121, 50, 77, 0.12),
+            transparent 32%
+        ),
+        #0c080d;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity 0.8s ease,
+        visibility 0.8s ease;
+}
+
+
+.home-visible {
+
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.site-header {
+
+    position: relative;
+
+    z-index: 20;
+
+    width: min(1120px, 90%);
+
+    margin: auto;
+
+    padding: 27px 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.055);
+}
+
+
+.site-logo {
+
+    color: #f5dce5;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 1.25rem;
+
+    text-decoration: none;
+}
+
+
+.site-logo span {
+
+    color: #bd6e8b;
+}
+
+
+.site-nav {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 24px;
+}
+
+
+.site-nav a {
+
+    color:
+        rgba(255, 255, 255, 0.52);
+
+    font-size: 0.72rem;
+
+    text-decoration: none;
+
+    transition:
+        color 0.25s ease;
+}
+
+
+.site-nav a:hover {
+
+    color: #e7a5ba;
+}
+
+
+/* =========================================================
+   HOME HERO
+   ========================================================= */
+
+.home-hero {
+
+    position: relative;
+
+    width: min(900px, 90%);
+
+    margin: auto;
+
+    padding:
+        125px
+        0
+        105px;
+
+    text-align: center;
+}
+
+
+.home-hero-glow {
+
+    position: absolute;
+
+    width: 360px;
+    height: 360px;
+
+    top: 25px;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        rgba(124, 51, 80, 0.08);
+
+    filter:
+        blur(80px);
+
+    pointer-events: none;
+}
+
+
+.eyebrow {
+
+    color: #b66f88;
+
+    font-size: 0.65rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.25em;
+}
+
+
+.home-hero h2 {
+
+    position: relative;
+
+    margin-top: 18px;
+
+    color: #fff5f8;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(3.2rem, 7vw, 6rem);
+
+    font-weight: 400;
+
+    line-height: 0.98;
+
+    letter-spacing: -0.04em;
+}
+
+
+.hero-line {
+
+    width: 44px;
+
+    height: 1px;
+
+    margin: 27px auto;
+
+    background:
+        rgba(203, 123, 150, 0.60);
+}
+
+
+.home-intro {
+
+    width: min(620px, 100%);
+
+    margin: auto;
+
+    color:
+        rgba(255, 255, 255, 0.55);
+
+    font-size: 0.95rem;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   CONTADOR
+   ========================================================= */
+
+.love-counter {
+
+    width: min(720px, 90%);
+
+    margin:
+        0 auto
+        80px;
+
+    padding:
+        34px 25px;
+
+    text-align: center;
+
+    border-top:
+        1px solid
+        rgba(203, 123, 150, 0.14);
+
+    border-bottom:
+        1px solid
+        rgba(203, 123, 150, 0.14);
+}
+
+
+.love-counter-label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255, 255, 255, 0.48);
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 0.9rem;
+}
+
+
+.love-counter-values {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 20px;
+}
+
+
+.counter-unit {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+
+.counter-unit strong {
+
+    color: #f5dce5;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 1.9rem;
+
+    font-weight: 400;
+}
+
+
+.counter-unit span {
+
+    color:
+        rgba(255, 255, 255, 0.38);
+
+    font-size: 0.62rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.14em;
+}
+
+
+.counter-separator {
+
+    color:
+        rgba(198, 112, 143, 0.50);
+
+    font-size: 1.2rem;
+}
+
+
+.love-counter-date {
+
+    margin-top: 20px;
+
+    color:
+        rgba(255, 255, 255, 0.30);
+
+    font-size: 0.64rem;
+
+    letter-spacing: 0.18em;
+}
+
+
+.love-counter-running {
+
+    margin-top: 8px;
+
+    color:
+        rgba(199, 119, 147, 0.62);
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 0.75rem;
+}
+
+
+/* =========================================================
+   MENÚ
+   ========================================================= */
+
+.home-menu {
+
+    width: min(1120px, 90%);
+
+    margin:
+        0 auto
+        130px;
+}
+
+
+.section-heading {
+
+    margin-bottom: 48px;
+
+    text-align: center;
+}
+
+
+.section-heading h3 {
+
+    margin-top: 14px;
+
+    color: #f7edf1;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(1.8rem, 4vw, 3rem);
+
+    font-weight: 400;
+}
+
+
+.menu-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 16px;
+}
+
+
+.menu-card {
+
+    position: relative;
+
+    min-height: 190px;
+
+    padding: 30px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.065);
+
+    border-radius: 3px;
+
+    background:
+        rgba(255, 255, 255, 0.018);
+
+    text-decoration: none;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        background 0.35s ease;
+}
+
+
+.menu-card:hover {
+
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(202, 118, 148, 0.26);
+
+    background:
+        rgba(255, 255, 255, 0.035);
+}
+
+
+.menu-number {
+
+    color:
+        rgba(196, 116, 143, 0.55);
+
+    font-size: 0.62rem;
+
+    letter-spacing: 0.18em;
+}
+
+
+.menu-card-content {
+
+    max-width: 80%;
+}
+
+
+.menu-card h4 {
+
+    margin-bottom: 8px;
+
+    color: #f7e8ed;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 1.65rem;
+
+    font-weight: 400;
+}
+
+
+.menu-card p {
+
+    color:
+        rgba(255, 255, 255, 0.42);
+
+    font-size: 0.78rem;
+
+    line-height: 1.6;
+}
+
+
+.menu-arrow {
+
+    position: absolute;
+
+    right: 28px;
+    bottom: 26px;
+
+    color:
+        rgba(201, 120, 148, 0.60);
+
+    font-size: 1.1rem;
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+.menu-card:hover .menu-arrow {
+
+    transform:
+        translateX(5px);
+}
+
+
+/* =========================================================
+   FINAL HOME
+   ========================================================= */
+
+.home-ending {
+
+    width: min(720px, 90%);
+
+    margin:
+        0 auto
+        120px;
+
+    text-align: center;
+}
+
+
+.ending-decoration {
+
+    margin-bottom: 25px;
+
+    color:
+        rgba(196, 112, 142, 0.65);
+
+    font-size: 1.2rem;
+}
+
+
+.home-ending h3 {
+
+    margin-top: 16px;
+
+    color: #fff4f7;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(2.4rem, 5vw, 4.3rem);
+
+    font-weight: 400;
+
+    line-height: 1;
+}
+
+
+.ending-line {
+
+    width: 38px;
+
+    height: 1px;
+
+    margin: 25px auto;
+
+    background:
+        rgba(203, 123, 150, 0.55);
+}
+
+
+.home-ending p:not(.eyebrow) {
+
+    max-width: 500px;
+
+    margin: auto;
+
+    color:
+        rgba(255, 255, 255, 0.48);
+
+    font-size: 0.85rem;
+
+    line-height: 1.8;
+}
+
+
+.home-ending strong {
+
+    display: block;
+
+    margin-top: 24px;
+
+    color:
+        rgba(224, 153, 174, 0.72);
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 1rem;
+
+    font-weight: 400;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.site-footer {
+
+    width: min(1120px, 90%);
+
+    margin: auto;
+
+    padding:
+        30px 0
+        40px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.05);
+
+    color:
+        rgba(255, 255, 255, 0.27);
+
+    font-size: 0.65rem;
+}
+
+
+.site-footer span {
+
+    letter-spacing: 0.12em;
+}
+
+
+/* =========================================================
+   TRANSICIONES
+   ========================================================= */
+
+body.page-exit {
+
+    opacity: 0;
+
+    transition:
+        opacity 0.5s ease;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .site-nav {
+        gap: 14px;
+    }
+
+    .site-nav a {
+        font-size: 0.67rem;
+    }
+
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================================================
+   MÓVIL
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .welcome-content {
+
+        width: 90%;
+
+        transform:
+            translateY(-5px);
+    }
+
+
+    .welcome-small {
+
+        margin-bottom: 8px;
+
+        font-size: 0.55rem;
+
+        letter-spacing: 0.20em;
+    }
+
+
+    .welcome-content h1 {
+
+        font-size:
+            clamp(3rem, 15vw, 4.2rem);
+
+        line-height: 0.92;
+    }
+
+
+    .welcome-line {
+
+        width: 32px;
+
+        margin:
+            13px auto
+            11px;
+    }
+
+
+    .welcome-ranita {
+
+        font-size: 0.82rem;
+    }
+
+
+    .welcome-description {
+
+        max-width: 330px;
+
+        margin:
+            14px auto
+            19px;
+
+        font-size: 0.82rem;
+
+        line-height: 1.65;
+    }
+
+
+    .enter-button {
+
+        min-height: 44px;
+
+        padding:
+            0 21px;
+
+        font-size: 0.72rem;
+    }
+
+
+    .welcome-heart {
+
+        margin-top: 14px;
+
+        font-size: 1.05rem;
+    }
+
+
+    .hidden-button-guide {
+
+        width: 48px;
+
+        height: 46px;
+
+        margin-top: 2px;
+    }
+
+
+    .guide-arrow {
+
+        font-size: 1rem;
+
+        height: 12px;
+
+        line-height: 12px;
+    }
+
+
+    .secret-button {
+
+        width: 31px;
+
+        height: 31px;
+
+        font-size: 0.78rem;
+    }
+
+
+    .site-header {
+
+        width: 88%;
+
+        padding:
+            20px 0;
+
+        flex-direction: column;
+
+        gap: 18px;
+    }
+
+
+    .site-nav {
+
+        width: 100%;
+
+        justify-content: center;
+
+        flex-wrap: wrap;
+
+        gap:
+            10px 16px;
+    }
+
+
+    .home-hero {
+
+        padding:
+            90px
+            0
+            80px;
+    }
+
+
+    .love-counter-values {
+
+        gap: 12px;
+    }
+
+
+    .counter-unit strong {
+
+        font-size: 1.55rem;
+    }
+
+
+    .home-menu {
+
+        margin-bottom: 90px;
+    }
+
+
+    .menu-card {
+
+        min-height: 175px;
+
+        padding: 25px;
+    }
+
+
+    .home-ending {
+
+        margin-bottom: 90px;
+    }
+
+
+    .site-footer {
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 8px;
+
+        text-align: center;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCIR MOVIMIENTO
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        scroll-behavior: auto !important;
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+    }
+
+}
+/* =========================================
+   REPRODUCTOR DE NUESTRA CANCIÓN
+   ========================================= */
+
+.love-music-player {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 80;
+
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    padding: 8px 13px 8px 8px;
+
+    border: 1px solid rgba(200, 120, 148, 0.16);
+    border-radius: 40px;
+
+    background: rgba(15, 9, 14, 0.76);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.25);
+
+    opacity: 0.82;
+
+    transition:
+        opacity 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.love-music-player:hover {
+    opacity: 1;
+    border-color: rgba(200, 120, 148, 0.35);
+    transform: translateY(-2px);
+}
+
+.music-toggle {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(200, 120, 148, 0.25);
+    border-radius: 50%;
+
+    color: rgba(255, 225, 235, 0.82);
+    background: rgba(128, 62, 85, 0.12);
+
+    font-size: 0.95rem;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.music-toggle:hover {
+    background: rgba(128, 62, 85, 0.28);
+    border-color: rgba(200, 120, 148, 0.45);
+    color: #fff;
+    transform: scale(1.06);
+}
+
+.music-player-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    min-width: 105px;
+}
+
+.music-player-label {
+    color: rgba(255, 240, 245, 0.82);
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 0.76rem;
+    letter-spacing: 0.02em;
+}
+
+.music-player-status {
+    color: rgba(255, 255, 255, 0.38);
+
+    font-size: 0.57rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+
+/* =========================================
+   MÓVIL
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .love-music-player {
+        right: 14px;
+        bottom: 14px;
+
+        padding: 7px 10px 7px 7px;
+
+        gap: 9px;
+    }
+
+    .music-toggle {
+        width: 31px;
+        height: 31px;
+
+        font-size: 0.85rem;
+    }
+
+    .music-player-info {
+        min-width: 88px;
+    }
+
+    .music-player-label {
+        font-size: 0.69rem;
+    }
+
+    .music-player-status {
+        font-size: 0.52rem;
+    }
+
+}

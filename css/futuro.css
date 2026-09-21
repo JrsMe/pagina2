@@ -1,0 +1,1624 @@
+/* =========================================================
+   FUTURO
+   ========================================================= */
+
+.futuro-page {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    color: #f7edf1;
+
+    background:
+        radial-gradient(
+            circle at 50% 5%,
+            rgba(118, 53, 82, 0.13),
+            transparent 32%
+        ),
+        #0c080d;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.futuro-header {
+
+    width:
+        min(1120px, 90%);
+
+    margin: auto;
+
+    padding:
+        25px 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.055);
+}
+
+
+.futuro-back {
+
+    color:
+        rgba(255,255,255,0.43);
+
+    font-size: 0.70rem;
+
+    text-decoration: none;
+
+    transition:
+        color 0.3s ease;
+}
+
+
+.futuro-back:hover {
+
+    color:
+        #e2a1b8;
+}
+
+
+.futuro-header-logo {
+
+    color:
+        #efdce4;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 1.05rem;
+}
+
+
+.futuro-header-logo span {
+
+    color:
+        #c27693;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.futuro-hero {
+
+    width:
+        min(900px, 90%);
+
+    margin:
+        auto;
+
+    padding:
+        135px 0
+        120px;
+
+    text-align:
+        center;
+}
+
+
+.futuro-eyebrow {
+
+    color:
+        #b9708b;
+
+    font-size:
+        0.63rem;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        0.27em;
+}
+
+
+.futuro-hero h1 {
+
+    margin-top:
+        18px;
+
+    color:
+        #fff5f8;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(3.4rem, 8vw, 6.3rem);
+
+    font-weight:
+        400;
+
+    line-height:
+        0.90;
+
+    letter-spacing:
+        -0.045em;
+}
+
+
+.futuro-hero-line {
+
+    width:
+        42px;
+
+    height:
+        1px;
+
+    margin:
+        28px auto;
+
+    background:
+        rgba(204,124,151,0.62);
+}
+
+
+.futuro-hero > p:last-child {
+
+    width:
+        min(590px, 100%);
+
+    margin:
+        auto;
+
+    color:
+        rgba(255,255,255,0.50);
+
+    font-size:
+        0.90rem;
+
+    line-height:
+        1.85;
+}
+
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.futuro-intro {
+
+    width:
+        min(850px, 90%);
+
+    margin:
+        0 auto
+        130px;
+
+    text-align:
+        center;
+}
+
+
+.futuro-section-label {
+
+    color:
+        #b9708b;
+
+    font-size:
+        0.61rem;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        0.24em;
+}
+
+
+.futuro-intro h2,
+.futuro-section-heading h2 {
+
+    margin-top:
+        15px;
+
+    color:
+        #f8edf1;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(2rem, 4vw, 3.2rem);
+
+    font-weight:
+        400;
+
+    line-height:
+        1.1;
+}
+
+
+.futuro-intro-text {
+
+    width:
+        min(590px, 100%);
+
+    margin:
+        28px auto
+        0;
+
+    color:
+        rgba(255,255,255,0.46);
+
+    font-size:
+        0.86rem;
+
+    line-height:
+        1.9;
+}
+
+
+/* =========================================================
+   DREAMS
+   ========================================================= */
+
+.futuro-dreams {
+
+    width:
+        min(1120px, 90%);
+
+    margin:
+        0 auto
+        145px;
+}
+
+
+.futuro-section-heading {
+
+    margin-bottom:
+        45px;
+
+    text-align:
+        center;
+}
+
+
+.dreams-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap:
+        15px;
+}
+
+
+.dream-card {
+
+    position:
+        relative;
+
+    min-height:
+        225px;
+
+    padding:
+        30px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.055);
+
+    background:
+        rgba(255,255,255,0.015);
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        background 0.35s ease;
+}
+
+
+.dream-card:hover {
+
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(202,119,148,0.25);
+
+    background:
+        rgba(255,255,255,0.028);
+}
+
+
+.dream-number {
+
+    color:
+        rgba(194,113,141,0.55);
+
+    font-size:
+        0.62rem;
+
+    letter-spacing:
+        0.16em;
+}
+
+
+.dream-card h3 {
+
+    max-width:
+        380px;
+
+    margin-top:
+        55px;
+
+    color:
+        #f5e8ed;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        1.55rem;
+
+    font-weight:
+        400;
+
+    line-height:
+        1.1;
+}
+
+
+.dream-card p {
+
+    max-width:
+        420px;
+
+    margin-top:
+        13px;
+
+    color:
+        rgba(255,255,255,0.39);
+
+    font-size:
+        0.76rem;
+
+    line-height:
+        1.7;
+}
+
+
+.dream-card-special {
+
+    border-color:
+        rgba(199,119,147,0.15);
+}
+
+
+.dream-heart {
+
+    position:
+        absolute;
+
+    right:
+        27px;
+
+    bottom:
+        25px;
+
+    color:
+        rgba(199,119,147,0.58);
+
+    font-size:
+        1.1rem;
+
+    animation:
+        dreamHeart 3s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes dreamHeart {
+
+    0%,
+    100% {
+        opacity: 0.45;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.90;
+        transform: scale(1.08);
+    }
+
+}
+
+
+/* =========================================================
+   CAMINO
+   ========================================================= */
+
+.futuro-path {
+
+    width:
+        min(850px, 90%);
+
+    margin:
+        0 auto
+        145px;
+}
+
+
+.future-timeline {
+
+    position:
+        relative;
+
+    margin-top:
+        60px;
+
+    padding-left:
+        48px;
+}
+
+
+.future-timeline::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        4px;
+
+    bottom:
+        10px;
+
+    left:
+        5px;
+
+    width:
+        1px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(199,119,147,0.40),
+            rgba(199,119,147,0.08)
+        );
+}
+
+
+.future-step {
+
+    position:
+        relative;
+
+    padding:
+        0 0
+        62px;
+}
+
+
+.future-step-dot {
+
+    position:
+        absolute;
+
+    left:
+        -48px;
+
+    top:
+        3px;
+
+    width:
+        11px;
+
+    height:
+        11px;
+
+    border:
+        1px solid
+        rgba(204,124,151,0.55);
+
+    border-radius:
+        50%;
+
+    background:
+        #0c080d;
+
+    box-shadow:
+        0 0 0 5px
+        rgba(128,62,85,0.05);
+}
+
+
+.future-step-content > span {
+
+    color:
+        rgba(199,119,147,0.66);
+
+    font-size:
+        0.61rem;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        0.18em;
+}
+
+
+.future-step h3 {
+
+    margin-top:
+        9px;
+
+    color:
+        #f3e6eb;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        1.45rem;
+
+    font-weight:
+        400;
+}
+
+
+.future-step p {
+
+    max-width:
+        500px;
+
+    margin-top:
+        9px;
+
+    color:
+        rgba(255,255,255,0.40);
+
+    font-size:
+        0.77rem;
+
+    line-height:
+        1.7;
+}
+
+
+/* =========================================================
+   CITA
+   ========================================================= */
+
+.futuro-quote {
+
+    width:
+        min(780px, 90%);
+
+    margin:
+        0 auto
+        155px;
+
+    text-align:
+        center;
+}
+
+
+.quote-mark {
+
+    color:
+        rgba(193,111,140,0.48);
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        3rem;
+
+    line-height:
+        0.5;
+}
+
+
+.futuro-quote blockquote {
+
+    margin-top:
+        20px;
+
+    color:
+        rgba(255,241,246,0.76);
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(1.35rem, 3vw, 2rem);
+
+    font-style:
+        italic;
+
+    font-weight:
+        400;
+
+    line-height:
+        1.5;
+}
+
+
+.quote-line {
+
+    width:
+        35px;
+
+    height:
+        1px;
+
+    margin:
+        27px auto
+        0;
+
+    background:
+        rgba(203,123,150,0.48);
+}
+
+
+/* =========================================================
+   GRAN CIERRE
+   ========================================================= */
+
+.futuro-ending {
+
+    position:
+        relative;
+
+    min-height:
+        680px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    overflow:
+        hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(123,48,79,0.16),
+            transparent 42%
+        );
+}
+
+
+.futuro-ending-content {
+
+    position:
+        relative;
+
+    z-index:
+        3;
+
+    width:
+        min(800px, 90%);
+
+    text-align:
+        center;
+}
+
+
+.futuro-ending-label {
+
+    color:
+        rgba(199,119,147,0.64);
+
+    font-size:
+        0.61rem;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        0.27em;
+}
+
+
+.futuro-ending-heart {
+
+    margin:
+        25px 0
+        22px;
+
+    color:
+        rgba(211,130,157,0.72);
+
+    font-size:
+        1.35rem;
+
+    animation:
+        endingHeart
+        3.5s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes endingHeart {
+
+    0%,
+    100% {
+        opacity: 0.48;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.12);
+    }
+
+}
+
+
+.futuro-ending h2 {
+
+    color:
+        #fff5f8;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(3rem, 7vw, 5.8rem);
+
+    font-weight:
+        400;
+
+    line-height:
+        0.94;
+
+    letter-spacing:
+        -0.045em;
+}
+
+
+.futuro-ending-line {
+
+    width:
+        40px;
+
+    height:
+        1px;
+
+    margin:
+        28px auto;
+
+    background:
+        rgba(204,124,151,0.60);
+}
+
+
+.futuro-final-message p {
+
+    color:
+        rgba(255,235,242,0.65);
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        1rem;
+
+    line-height:
+        1.8;
+}
+
+
+.futuro-final-message span {
+
+    display:
+        block;
+
+    margin-top:
+        6px;
+
+    color:
+        rgba(205,124,151,0.72);
+
+    font-size:
+        1.05rem;
+}
+
+
+.futuro-final-small {
+
+    margin-top:
+        24px;
+
+    color:
+        rgba(255,255,255,0.32);
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        0.76rem;
+
+    font-style:
+        italic;
+}
+
+
+.futuro-signature {
+
+    margin-top:
+        30px;
+
+    color:
+        rgba(216,145,168,0.64);
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        0.90rem;
+
+    font-style:
+        italic;
+}
+
+
+.futuro-seal {
+
+    width:
+        45px;
+
+    height:
+        45px;
+
+    margin:
+        28px auto
+        0;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border:
+        1px solid
+        rgba(203,123,150,0.18);
+
+    border-radius:
+        50%;
+}
+
+
+.futuro-seal span {
+
+    color:
+        rgba(203,123,150,0.55);
+
+    font-size:
+        0.9rem;
+}
+
+
+/* =========================================================
+   ESTRELLAS DEL CIERRE
+   ========================================================= */
+
+.ending-stars {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    pointer-events:
+        none;
+}
+
+
+.ending-stars span {
+
+    position:
+        absolute;
+
+    color:
+        rgba(255,220,232,0.16);
+
+    animation:
+        endingStar
+        5s
+        ease-in-out
+        infinite;
+}
+
+
+.ending-stars span:nth-child(1) {
+    top: 22%;
+    left: 15%;
+}
+
+.ending-stars span:nth-child(2) {
+    top: 17%;
+    right: 20%;
+    animation-delay: 1s;
+}
+
+.ending-stars span:nth-child(3) {
+    top: 42%;
+    left: 8%;
+    animation-delay: 1.5s;
+}
+
+.ending-stars span:nth-child(4) {
+    bottom: 20%;
+    left: 19%;
+    animation-delay: 2s;
+}
+
+.ending-stars span:nth-child(5) {
+    bottom: 25%;
+    right: 12%;
+    animation-delay: 2.5s;
+}
+
+
+@keyframes endingStar {
+
+    0%,
+    100% {
+        opacity: 0.12;
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: 0.55;
+        transform: translateY(-7px);
+    }
+
+}
+
+
+/* =========================================================
+   REVELACIÓN FINAL
+   ========================================================= */
+
+.futuro-final-reveal {
+
+    position:
+        relative;
+
+    min-height:
+        100vh;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    overflow:
+        hidden;
+
+    background:
+        #070509;
+
+    opacity:
+        0;
+
+    transform:
+        translateY(35px);
+
+    transition:
+        opacity 2s ease,
+        transform 2s ease;
+}
+
+
+.futuro-final-reveal.final-reveal-active {
+
+    opacity:
+        1;
+
+    transform:
+        translateY(0);
+}
+
+
+.final-reveal-content {
+
+    position:
+        relative;
+
+    z-index:
+        3;
+
+    text-align:
+        center;
+
+    opacity:
+        0;
+
+    transform:
+        scale(0.96);
+
+    transition:
+        opacity 2s ease 0.7s,
+        transform 2s ease 0.7s;
+}
+
+
+.final-reveal-active .final-reveal-content {
+
+    opacity:
+        1;
+
+    transform:
+        scale(1);
+}
+
+
+.final-reveal-heart {
+
+    color:
+        rgba(213,131,158,0.82);
+
+    font-size:
+        1.5rem;
+
+    animation:
+        finalHeart
+        3s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes finalHeart {
+
+    0%,
+    100% {
+        opacity: 0.45;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+
+}
+
+
+.final-reveal-content > p {
+
+    margin-top:
+        22px;
+
+    color:
+        rgba(204,126,151,0.62);
+
+    font-size:
+        0.60rem;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        0.28em;
+}
+
+
+.final-reveal-content h2 {
+
+    margin-top:
+        22px;
+
+    color:
+        #fff6f9;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(3.2rem, 8vw, 6.4rem);
+
+    font-weight:
+        400;
+
+    line-height:
+        0.92;
+
+    letter-spacing:
+        -0.045em;
+}
+
+
+.final-reveal-line {
+
+    width:
+        38px;
+
+    height:
+        1px;
+
+    margin:
+        30px auto;
+
+    background:
+        rgba(203,123,150,0.55);
+}
+
+
+.final-reveal-date {
+
+    color:
+        rgba(255,255,255,0.24);
+
+    font-size:
+        0.61rem;
+
+    letter-spacing:
+        0.20em;
+}
+
+
+/* =========================================================
+   ESTRELLAS REVELACIÓN
+   ========================================================= */
+
+.final-reveal-stars {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    pointer-events:
+        none;
+}
+
+
+.final-reveal-stars span {
+
+    position:
+        absolute;
+
+    color:
+        rgba(255,221,232,0);
+
+    transition:
+        color 2s ease;
+}
+
+
+.final-reveal-active .final-reveal-stars span {
+
+    color:
+        rgba(255,221,232,0.22);
+
+    animation:
+        finalStar
+        5s
+        ease-in-out
+        infinite;
+}
+
+
+.final-reveal-stars span:nth-child(1) {
+    top: 17%;
+    left: 18%;
+}
+
+.final-reveal-stars span:nth-child(2) {
+    top: 28%;
+    right: 16%;
+}
+
+.final-reveal-stars span:nth-child(3) {
+    top: 43%;
+    left: 9%;
+}
+
+.final-reveal-stars span:nth-child(4) {
+    bottom: 21%;
+    left: 22%;
+}
+
+.final-reveal-stars span:nth-child(5) {
+    bottom: 30%;
+    right: 10%;
+}
+
+.final-reveal-stars span:nth-child(6) {
+    top: 19%;
+    right: 30%;
+}
+
+.final-reveal-stars span:nth-child(7) {
+    bottom: 16%;
+    right: 27%;
+}
+
+
+@keyframes finalStar {
+
+    0%,
+    100% {
+        opacity: 0.15;
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: 0.75;
+        transform: translateY(-6px);
+    }
+
+}
+
+
+/* =========================================================
+   VOLVER
+   ========================================================= */
+
+.futuro-home {
+
+    width:
+        min(700px, 90%);
+
+    margin:
+        0 auto;
+
+    padding:
+        115px 0;
+
+    text-align:
+        center;
+}
+
+
+.futuro-home p {
+
+    color:
+        rgba(255,255,255,0.38);
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        1rem;
+}
+
+
+.futuro-home span {
+
+    display:
+        block;
+
+    margin-top:
+        9px;
+
+    color:
+        rgba(255,255,255,0.25);
+
+    font-size:
+        0.72rem;
+}
+
+
+.futuro-home-button {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    margin-top:
+        32px;
+
+    padding:
+        12px 23px;
+
+    border:
+        1px solid
+        rgba(203,123,150,0.24);
+
+    border-radius:
+        30px;
+
+    color:
+        rgba(255,255,255,0.48);
+
+    background:
+        rgba(128,62,85,0.05);
+
+    font-size:
+        0.69rem;
+
+    text-decoration:
+        none;
+
+    transition:
+        color 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+.futuro-home-button:hover {
+
+    color:
+        #f5dce5;
+
+    border-color:
+        rgba(203,123,150,0.48);
+
+    background:
+        rgba(128,62,85,0.12);
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.futuro-footer {
+
+    width:
+        min(1120px, 90%);
+
+    margin:
+        auto;
+
+    padding:
+        30px 0
+        40px;
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.05);
+
+    color:
+        rgba(255,255,255,0.25);
+
+    font-size:
+        0.63rem;
+}
+
+
+.futuro-footer span {
+
+    letter-spacing:
+        0.13em;
+}
+
+
+/* =========================================================
+   MÓVIL
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .futuro-header {
+
+        width:
+            88%;
+
+        padding:
+            20px 0;
+    }
+
+
+    .futuro-header-logo {
+
+        font-size:
+            0.95rem;
+    }
+
+
+    .futuro-hero {
+
+        padding:
+            100px 0
+            90px;
+    }
+
+
+    .futuro-intro,
+    .futuro-dreams,
+    .futuro-path {
+
+        margin-bottom:
+            100px;
+    }
+
+
+    .dreams-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .dream-card {
+
+        min-height:
+            210px;
+
+        padding:
+            25px;
+    }
+
+
+    .dream-card h3 {
+
+        margin-top:
+            45px;
+
+        font-size:
+            1.4rem;
+    }
+
+
+    .future-timeline {
+
+        padding-left:
+            35px;
+    }
+
+
+    .future-step-dot {
+
+        left:
+            -35px;
+    }
+
+
+    .futuro-quote {
+
+        margin-bottom:
+            100px;
+    }
+
+
+    .futuro-ending {
+
+        min-height:
+            590px;
+    }
+
+
+    .futuro-ending h2 {
+
+        font-size:
+            clamp(2.8rem, 13vw, 4.5rem);
+    }
+
+
+    .futuro-final-reveal {
+
+        min-height:
+            85vh;
+    }
+
+
+    .final-reveal-content h2 {
+
+        font-size:
+            clamp(2.8rem, 13vw, 4.5rem);
+    }
+
+
+    .futuro-home {
+
+        padding:
+            85px 0;
+    }
+
+
+    .futuro-footer {
+
+        width:
+            88%;
+
+        flex-direction:
+            column;
+
+        align-items:
+            center;
+
+        gap:
+            8px;
+
+        text-align:
+            center;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCIR MOVIMIENTO
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .futuro-ending-heart,
+    .dream-heart,
+    .final-reveal-heart,
+    .ending-stars span,
+    .final-reveal-stars span {
+
+        animation:
+            none !important;
+    }
+
+
+    .futuro-final-reveal {
+
+        transition:
+            none;
+    }
+
+
+    .final-reveal-content {
+
+        transition:
+            none;
+    }
+
+}

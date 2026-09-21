@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Para Brizly ♡</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navigation.css">
+
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         PANTALLA DE BIENVENIDA
+         ===================================================== -->
+
+    <section class="welcome-screen">
+
+        <div class="welcome-glow welcome-glow-one"></div>
+        <div class="welcome-glow welcome-glow-two"></div>
+
+        <div class="welcome-stars">
+            <span>✦</span>
+            <span>·</span>
+            <span>✧</span>
+            <span>·</span>
+            <span>✦</span>
+            <span>·</span>
+            <span>✧</span>
+        </div>
+
+
+        <div class="welcome-content">
+
+            <p class="welcome-small">
+                Para alguien muy especial
+            </p>
+
+
+            <h1>
+                Mi niña
+            </h1>
+
+
+            <div class="welcome-line"></div>
+
+
+            <p class="welcome-ranita">
+                Brizly · mi ranita 🐸
+            </p>
+
+
+            <p class="welcome-description">
+                Hice este pequeño lugar solamente para ti.
+                Para guardar un poquito de todo lo que siento
+                por ti.
+            </p>
+
+
+            <button
+                type="button"
+                class="enter-button"
+            >
+                Entrar a nuestro mundo
+            </button>
+
+
+            <div class="welcome-heart">
+                ♡
+            </div>
+
+
+            <!-- =================================================
+                 GUÍA HACIA EL BOTÓN SECRETO
+                 ================================================= -->
+
+            <div class="hidden-button-guide">
+
+                <span class="guide-arrow">⌄</span>
+                <span class="guide-arrow">⌄</span>
+                <span class="guide-arrow">⌄</span>
+
+            </div>
+
+
+            <!-- =================================================
+                 BOTÓN SECRETO
+                 ================================================= -->
+
+            <a
+                href="pages/mensaje-secreto.html"
+                class="secret-button"
+                aria-label="Mensaje secreto"
+            >
+                ♡
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         REPRODUCTOR DE MÚSICA PERMANENTE
+
+         Este elemento pertenece al INDEX y permanece fuera
+         de la ventana emergente.
+         ===================================================== -->
+
+    <audio
+        id="love-audio"
+        preload="auto"
+    >
+
+        <source
+            src="audio/nuestra-cancion.mp3"
+            type="audio/mpeg"
+        >
+
+        Tu navegador no puede reproducir este audio.
+
+    </audio>
+
+
+    <div class="love-music-player">
+
+        <button
+            type="button"
+            class="music-toggle"
+            id="music-toggle"
+            aria-label="Reproducir nuestra canción"
+        >
+            ♫
+        </button>
+
+
+        <div class="music-player-info">
+
+            <span class="music-player-label">
+                Nuestra canción
+            </span>
+
+
+            <span
+                class="music-player-status"
+                id="music-status"
+            >
+                Pausada
+            </span>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         MENÚ PRINCIPAL
+         ===================================================== -->
+
+    <main
+        class="home-screen"
+        id="menu"
+    >
+
+
+        <!-- =================================================
+             HEADER
+             ================================================= -->
+
+        <header class="site-header">
+
+            <a
+                href="index.html#menu"
+                class="site-logo"
+            >
+                Brizly <span>♡</span>
+            </a>
+
+
+            <nav class="site-nav">
+
+                <a href="pages/historia.html">
+                    Historia
+                </a>
+
+                <a href="pages/recuerdos.html">
+                    Recuerdos
+                </a>
+
+                <a href="pages/musica.html">
+                    Música
+                </a>
+
+                <a href="pages/razones.html">
+                    Razones
+                </a>
+
+                <a href="pages/carta.html">
+                    Carta
+                </a>
+
+                <a href="pages/mensajes.html">
+                    Mensajes
+                </a>
+
+                <a href="pages/futuro.html">
+                    Futuro
+                </a>
+
+            </nav>
+
+        </header>
+
+
+
+        <!-- =====================================================
+             HERO
+             ===================================================== -->
+
+        <section class="home-hero">
+
+            <div class="home-hero-glow"></div>
+
+
+            <p class="eyebrow">
+                Nuestro pequeño mundo
+            </p>
+
+
+            <h2>
+                Mi niña,<br>
+                mi ranita.
+            </h2>
+
+
+            <div class="hero-line"></div>
+
+
+            <p class="home-intro">
+                No tomes este pequeño obsequio como una despedida
+                o algo malo, quisiera que lo tomes como lo que es,
+                un homenaje al amor ♡
+            </p>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             CONTADOR
+             ===================================================== -->
+
+        <section class="love-counter">
+
+            <div class="love-counter-label">
+                Desde aquel día...
+            </div>
+
+
+            <div class="love-counter-values">
+
+
+                <div class="counter-unit">
+
+                    <strong id="counter-years">
+                        0
+                    </strong>
+
+                    <span>
+                        años
+                    </span>
+
+                </div>
+
+
+                <div class="counter-separator">
+                    ·
+                </div>
+
+
+                <div class="counter-unit">
+
+                    <strong id="counter-months">
+                        0
+                    </strong>
+
+                    <span>
+                        meses
+                    </span>
+
+                </div>
+
+
+                <div class="counter-separator">
+                    ·
+                </div>
+
+
+                <div class="counter-unit">
+
+                    <strong id="counter-days">
+                        0
+                    </strong>
+
+                    <span>
+                        días
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="love-counter-date">
+                27 · 05 · 2025
+            </div>
+
+
+            <div class="love-counter-running">
+                y contando ♡
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             MENÚ DE SECCIONES
+             ===================================================== -->
+
+        <section class="home-menu">
+
+
+            <div class="section-heading">
+
+                <p class="eyebrow">
+                    Un recorrido por nosotros
+                </p>
+
+
+                <h3>
+                    Todo lo que quiero guardar contigo.
+                </h3>
+
+            </div>
+
+
+
+            <div class="menu-grid">
+
+
+                <!-- =================================================
+                     HISTORIA
+                     ================================================= -->
+
+                <a
+                    href="pages/historia.html"
+                    class="menu-card menu-card-history"
+                >
+
+                    <span class="menu-number">
+                        01
+                    </span>
+
+
+                    <div class="menu-card-content">
+
+                        <h4>
+                            Historia
+                        </h4>
+
+                        <p>
+                            Desde aquel primer día
+                            hasta convertirnos en nosotros.
+                        </p>
+
+                    </div>
+
+
+                    <span class="menu-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+
+                <!-- =================================================
+                     RECUERDOS
+                     ================================================= -->
+
+                <a
+                    href="pages/recuerdos.html"
+                    class="menu-card menu-card-memories"
+                >
+
+                    <span class="menu-number">
+                        02
+                    </span>
+
+
+                    <div class="menu-card-content">
+
+                        <h4>
+                            Recuerdos
+                        </h4>
+
+                        <p>
+                            Momentos que quiero volver
+                            a mirar una y otra vez.
+                        </p>
+
+                    </div>
+
+
+                    <span class="menu-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+
+                <!-- =================================================
+                     MÚSICA
+                     ================================================= -->
+
+                <a
+                    href="pages/musica.html"
+                    class="menu-card menu-card-music"
+                >
+
+                    <span class="menu-number">
+                        03
+                    </span>
+
+
+                    <div class="menu-card-content">
+
+                        <h4>
+                            Música
+                        </h4>
+
+                        <p>
+                            Canciones que me hacen
+                            pensar en ti.
+                        </p>
+
+                    </div>
+
+
+                    <span class="menu-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+
+                <!-- =================================================
+                     RAZONES
+                     ================================================= -->
+
+                <a
+                    href="pages/razones.html"
+                    class="menu-card menu-card-reasons"
+                >
+
+                    <span class="menu-number">
+                        04
+                    </span>
+
+
+                    <div class="menu-card-content">
+
+                        <h4>
+                            Razones
+                        </h4>
+
+                        <p>
+                            Algunas de las tantas razones
+                            por las que te amo.
+                        </p>
+
+                    </div>
+
+
+                    <span class="menu-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+
+                <!-- =================================================
+                     CARTA
+                     ================================================= -->
+
+                <a
+                    href="pages/carta.html"
+                    class="menu-card menu-card-letter"
+                >
+
+                    <span class="menu-number">
+                        05
+                    </span>
+
+
+                    <div class="menu-card-content">
+
+                        <h4>
+                            Carta
+                        </h4>
+
+                        <p>
+                            Algunas cosas que quería
+                            decirte desde el corazón.
+                        </p>
+
+                    </div>
+
+
+                    <span class="menu-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+
+                <!-- =================================================
+                     MENSAJES
+                     ================================================= -->
+
+                <a
+                    href="pages/mensajes.html"
+                    class="menu-card menu-card-messages"
+                >
+
+                    <span class="menu-number">
+                        06
+                    </span>
+
+
+                    <div class="menu-card-content">
+
+                        <h4>
+                            Mensajes
+                        </h4>
+
+                        <p>
+                            Pequeñas palabras que
+                            solamente nosotros entendemos.
+                        </p>
+
+                    </div>
+
+
+                    <span class="menu-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+
+                <!-- =================================================
+                     FUTURO
+                     ================================================= -->
+
+                <a
+                    href="pages/futuro.html"
+                    class="menu-card menu-card-future"
+                >
+
+                    <span class="menu-number">
+                        07
+                    </span>
+
+
+                    <div class="menu-card-content">
+
+                        <h4>
+                            Futuro
+                        </h4>
+
+                        <p>
+                            Todo aquello que todavía
+                            nos queda por vivir.
+                        </p>
+
+                    </div>
+
+
+                    <span class="menu-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             FINAL
+             ===================================================== -->
+
+        <section class="home-ending">
+
+
+            <div class="ending-decoration">
+                ♡
+            </div>
+
+
+            <p class="eyebrow">
+                Para mi ranita...
+            </p>
+
+
+            <h3>
+                Te elegiría<br>
+                una y otra vez.
+            </h3>
+
+
+            <div class="ending-line"></div>
+
+
+            <p>
+                Porque entre tantas personas,
+                tantos lugares y tantos momentos,
+                volvería a encontrarte a ti.
+            </p>
+
+
+            <strong>
+                Brizly
+            </strong>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             FOOTER
+             ===================================================== -->
+
+        <footer class="site-footer">
+
+            <p>
+                Hecho con amor para Brizly ♡
+            </p>
+
+
+            <span>
+                27 · 05 · 2025
+            </span>
+
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         VENTANA DE NAVEGACIÓN
+
+         El contenido de las páginas internas se cargará aquí
+         sin abandonar el INDEX.
+         ===================================================== -->
+
+    <div
+        id="page-modal"
+        class="page-modal"
+        aria-hidden="true"
+    >
+
+        <div class="page-modal-backdrop"></div>
+
+
+        <section
+            class="page-modal-window"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="page-modal-title"
+        >
+
+
+            <header class="page-modal-header">
+
+                <div class="page-modal-title-wrap">
+
+                    <span
+                        class="page-modal-small-title"
+                        id="page-modal-section"
+                    >
+                        Nuestro mundo
+                    </span>
+
+
+                    <h2 id="page-modal-title">
+                        Brizly ♡
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="page-modal-close"
+                    class="page-modal-close"
+                    aria-label="Cerrar"
+                >
+                    ×
+                </button>
+
+            </header>
+
+
+
+            <div
+                id="page-modal-content"
+                class="page-modal-content"
+            >
+
+                <div class="page-modal-loading">
+
+                    <span class="page-modal-loading-heart">
+                        ♡
+                    </span>
+
+                    <span>
+                        Preparando nuestro pequeño mundo...
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         SCRIPTS
+         ===================================================== -->
+
+    <script src="Js/script.js"></script>
+
+    <script src="audio/player.js"></script>
+
+    <script src="Js/navigation.js"></script>
+
+
+</body>
+
+</html>
