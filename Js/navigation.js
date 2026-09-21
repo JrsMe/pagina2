@@ -1,1155 +1,413 @@
-document.addEventListener("DOMContentLoaded", () => {
+(() => {
+    "use strict";
 
-    /*
-     * ============================================================
-     * NAVEGACIÓN SPA
-     * Mantiene index.html vivo para que el audio NO se reinicie.
-     * ============================================================
-     */
+    let started = false;
 
-    let pageContainer =
-        document.getElementById("spa-page-container");
+    function init() {
+        if (started) return;
+        started = true;
 
-    const homeScreen =
-        document.querySelector(".home-screen");
+        const audio = document.getElementById("love-audio");
+        const button = document.getElementById("music-toggle");
+        const status = document.getElementById("music-status");
+        const home = document.querySelector(".home-screen");
 
-    const welcomeScreen =
-        document.querySelector(".welcome-screen");
+        let container = document.getElementById("spa-page-container");
 
-    const permanentAudio =
-        document.getElementById("love-audio");
+        if (!container) {
+            container = document.createElement("div");
+            container.id = "spa-page-container";
 
-    const permanentPlayer =
-        document.querySelector(".love-music-player");
-
-
-    /*
-     * ------------------------------------------------------------
-     * Crear automáticamente el contenedor SPA
-     * ------------------------------------------------------------
-     */
-
-    if (!pageContainer) {
-
-        pageContainer =
-            document.createElement("div");
-
-        pageContainer.id =
-            "spa-page-container";
-
-        if (homeScreen) {
-
-            homeScreen.parentNode.insertBefore(
-                pageContainer,
-                homeScreen
-            );
-
-            pageContainer.appendChild(
-                homeScreen
-            );
-
-        } else {
-
-            document.body.appendChild(
-                pageContainer
-            );
-
+            if (home && home.parentNode) {
+                home.parentNode.insertBefore(container, home);
+                container.appendChild(home);
+            } else {
+                document.body.appendChild(container);
+            }
+        } else if (home && home.parentNode !== container) {
+            container.appendChild(home);
         }
 
-    } else if (
-        homeScreen &&
-        homeScreen.parentNode !== pageContainer
-    ) {
-
-        pageContainer.appendChild(
-            homeScreen
-        );
-
-    }
-
-
-    /*
-     * ------------------------------------------------------------
-     * Estado
-     * ------------------------------------------------------------
-     */
-
-    let currentPage =
-        window.location.pathname +
-        window.location.search;
-
-
-    /*
-     * ------------------------------------------------------------
-     * Utilidades
-     * ------------------------------------------------------------
-     */
-
-    function isExternalLink(href) {
-
-        if (!href) {
-            return true;
+        if (audio) {
+            audio.loop = true;
+            audio.volume = 0.35;
         }
 
-        return (
-            href.startsWith("http://") ||
-            href.startsWith("https://") ||
-            href.startsWith("mailto:") ||
-            href.startsWith("tel:") ||
-            href.startsWith("javascript:")
-        );
+        function updatePlayer() {
+            if (!audio || !button || !status) return;
 
-    }
+            if (audio.paused) {
+                button.textContent = "▶";
+                button.setAttribute("aria-label", "Reproducir nuestra canción");
+                status.textContent = "Pausada";
+            } else {
+                button.textContent = "Ⅱ";
+                button.setAttribute("aria-label", "Pausar nuestra canción");
+                status.textContent = "Reproduciendo";
+            }
+        }
 
-
-    function isHashLink(href) {
-
-        return (
-            href === "#" ||
-            href.startsWith("#")
-        );
-
-    }
-
-
-    function getAbsoluteUrl(href) {
-
-        return new URL(
-            href,
-            window.location.href
-        );
-
-    }
-
-
-    function isPageLink(url) {
-
-        const pathname =
-            url.pathname.toLowerCase();
-
-        return (
-            pathname.endsWith(".html") ||
-            pathname === "/" ||
-            pathname.endsWith("/")
-        );
-
-    }
-
-
-    /*
-     * ------------------------------------------------------------
-     * Convertir rutas de imágenes, enlaces, etc.
-     * ------------------------------------------------------------
-     */
-
-    function fixPaths(element, baseUrl) {
-
-        const attributes = [
-            "src",
-            "href",
-            "poster",
-            "data-image"
-        ];
-
-
-        attributes.forEach(attribute => {
-
-            const elements =
-                element.querySelectorAll(
-                    `[${attribute}]`
-                );
-
-
-            elements.forEach(item => {
-
-                const value =
-                    item.getAttribute(
-                        attribute
-                    );
-
-
-                if (
-                    !value ||
-                    value.startsWith("#") ||
-                    value.startsWith("data:") ||
-                    value.startsWith("blob:") ||
-                    value.startsWith("http://") ||
-                    value.startsWith("https://") ||
-                    value.startsWith("mailto:") ||
-                    value.startsWith("tel:") ||
-                    value.startsWith("javascript:")
-                ) {
-
-                    return;
-
-                }
-
+        if (button && audio) {
+            button.addEventListener("click", async (event) => {
+                event.preventDefault();
+                event.stopPropagation();
 
                 try {
-
-                    item.setAttribute(
-                        attribute,
-                        new URL(
-                            value,
-                            baseUrl
-                        ).href
-                    );
-
+                    if (audio.paused) {
+                        await audio.play();
+                    } else {
+                        audio.pause();
+                    }
                 } catch (error) {
-
-                    console.warn(
-                        "No se pudo corregir la ruta:",
-                        value
-                    );
-
+                    console.error("No se pudo reproducir nuestra canción:", error);
+                    if (status) status.textContent = "No se pudo reproducir";
                 }
 
+                updatePlayer();
             });
+        }
 
-        });
-
-    }
-
-
-    /*
-     * ------------------------------------------------------------
-     * Cargar CSS de cada página
-     * ------------------------------------------------------------
-     */
-
-    function loadPageStyles(doc, pageUrl) {
-
-        document
-            .querySelectorAll(
-                "link[data-spa-style]"
-            )
-            .forEach(link => {
-
-                link.remove();
-
+        if (audio) {
+            audio.addEventListener("play", updatePlayer);
+            audio.addEventListener("pause", updatePlayer);
+            audio.addEventListener("ended", updatePlayer);
+            audio.addEventListener("error", () => {
+                console.error("No se pudo cargar audio/nuestra-cancion.mp3", audio.error);
+                if (status) status.textContent = "Audio no disponible";
             });
+        }
 
+        updatePlayer();
 
-        const styles =
-            doc.querySelectorAll(
-                'link[rel="stylesheet"]'
-            );
+        function isModifiedClick(event) {
+            return event.ctrlKey ||
+                   event.shiftKey ||
+                   event.altKey ||
+                   event.metaKey ||
+                   event.button !== 0;
+        }
 
+        function isExternal(href) {
+            return !href ||
+                   /^(https?:|mailto:|tel:|javascript:)/i.test(href);
+        }
 
-        styles.forEach(style => {
+        function isHash(href) {
+            return href === "#" || href.startsWith("#");
+        }
 
-            const href =
-                style.getAttribute(
-                    "href"
-                );
-
-
-            if (!href) {
-                return;
-            }
-
-
+        function toUrl(href) {
             try {
+                return new URL(href, window.location.href);
+            } catch {
+                return null;
+            }
+        }
 
-                const absoluteHref =
-                    new URL(
-                        href,
-                        pageUrl
-                    ).href;
+        function isPage(url) {
+            const path = url.pathname.toLowerCase();
+            return path.endsWith(".html") ||
+                   path === "/" ||
+                   path.endsWith("/");
+        }
 
+        function isHome(url) {
+            const path = url.pathname;
+            return path === "/" || path.endsWith("/index.html");
+        }
 
-                /*
-                 * No volver a cargar style.css.
-                 * Ya está cargado permanentemente.
-                 */
+        function removePageCss() {
+            document.querySelectorAll("link[data-spa-style]")
+                .forEach(link => link.remove());
+        }
 
-                if (
-                    absoluteHref ===
-                    new URL(
-                        "css/style.css",
-                        window.location.href
-                    ).href
-                ) {
+        function loadPageCss(doc, pageUrl) {
+            removePageCss();
 
-                    return;
+            const globalCss = new URL(
+                "css/style.css",
+                window.location.href
+            ).href;
 
+            doc.querySelectorAll('link[rel="stylesheet"]').forEach(style => {
+                const href = style.getAttribute("href");
+                if (!href) return;
+
+                try {
+                    const absolute = new URL(href, pageUrl).href;
+
+                    if (absolute === globalCss) return;
+
+                    const link = document.createElement("link");
+                    link.rel = "stylesheet";
+                    link.href = absolute;
+                    link.dataset.spaStyle = "true";
+                    document.head.appendChild(link);
+                } catch (error) {
+                    console.error("No se pudo cargar CSS:", href, error);
                 }
-
-
-                const link =
-                    document.createElement(
-                        "link"
-                    );
-
-                link.rel =
-                    "stylesheet";
-
-                link.href =
-                    absoluteHref;
-
-                link.dataset.spaStyle =
-                    "true";
-
-                document.head.appendChild(
-                    link
-                );
-
-            } catch (error) {
-
-                console.warn(
-                    "No se pudo cargar CSS:",
-                    href
-                );
-
-            }
-
-        });
-
-    }
-
-
-    /*
-     * ------------------------------------------------------------
-     * Ejecutar scripts internos de la página
-     * ------------------------------------------------------------
-     */
-
-    function removePageScripts() {
-
-        document
-            .querySelectorAll(
-                "script[data-spa-page-script]"
-            )
-            .forEach(script => {
-
-                script.remove();
-
             });
+        }
 
-    }
+        function fixPaths(root, baseUrl) {
+            root.querySelectorAll("[src], [href], [poster], [data-image]")
+                .forEach(element => {
+                    ["src", "href", "poster", "data-image"].forEach(attribute => {
+                        if (!element.hasAttribute(attribute)) return;
 
+                        const value = element.getAttribute(attribute);
+                        if (!value ||
+                            value.startsWith("#") ||
+                            /^(data:|blob:|https?:|mailto:|tel:|javascript:)/i.test(value)) {
+                            return;
+                        }
 
-    function runPageScripts(doc) {
+                        try {
+                            element.setAttribute(
+                                attribute,
+                                new URL(value, baseUrl).href
+                            );
+                        } catch (error) {
+                            console.warn("Ruta no válida:", value);
+                        }
+                    });
+                });
+        }
 
-        removePageScripts();
+        function removePageScripts() {
+            document.querySelectorAll("script[data-spa-page-script]")
+                .forEach(script => script.remove());
+        }
 
+        function runPageScripts(doc) {
+            removePageScripts();
 
-        const scripts =
-            doc.querySelectorAll(
-                "script"
-            );
+            doc.querySelectorAll("script").forEach(original => {
+                if (original.src) return;
 
+                const code = original.textContent.trim();
+                if (!code) return;
 
-        scripts.forEach(originalScript => {
+                const script = document.createElement("script");
+                script.dataset.spaPageScript = "true";
 
-            /*
-             * Nunca ejecutar scripts externos
-             * de las páginas.
-             *
-             * El sistema global ya está cargado.
-             */
-
-            if (
-                originalScript.src
-            ) {
-
-                return;
-
-            }
-
-
-            const code =
-                originalScript.textContent;
-
-
-            if (!code.trim()) {
-                return;
-            }
-
-
-            /*
-             * Las páginas fueron diseñadas originalmente
-             * para DOMContentLoaded.
-             *
-             * En navegación SPA necesitamos sustituirlo
-             * por nuestro evento personalizado.
-             */
-
-            const modifiedCode =
-                code.replace(
+                script.textContent = code.replace(
                     /DOMContentLoaded/g,
-                    "spa:page-ready"
+                    "spa-page-ready"
                 );
 
-
-            const script =
-                document.createElement(
-                    "script"
-                );
-
-
-            script.dataset.spaPageScript =
-                "true";
-
-
-            script.textContent =
-                modifiedCode;
-
-
-            document.body.appendChild(
-                script
-            );
-
-        });
-
-
-        /*
-         * Avisar a cualquier script de la página
-         * que ya puede inicializarse.
-         */
-
-        document.dispatchEvent(
-            new Event(
-                "spa:page-ready"
-            )
-        );
-
-    }
-
-
-    /*
-     * ------------------------------------------------------------
-     * Mostrar inicio
-     * ------------------------------------------------------------
-     */
-
-    function showHome(pushState) {
-
-        /*
-         * Limpiar la página actual.
-         */
-
-        pageContainer.innerHTML = "";
-
-
-        if (homeScreen) {
-
-            pageContainer.appendChild(
-                homeScreen
-            );
-
-            homeScreen.style.display =
-                "";
-
-            homeScreen.classList.add(
-                "home-visible"
-            );
-
-        }
-
-
-        /*
-         * Quitar CSS exclusivo de páginas.
-         */
-
-        document
-            .querySelectorAll(
-                "link[data-spa-style]"
-            )
-            .forEach(link => {
-
-                link.remove();
-
+                document.body.appendChild(script);
             });
 
-
-        removePageScripts();
-
-
-        document.body.className =
-            "";
-
-
-        if (pushState) {
-
-            history.pushState(
-                {},
-                "",
-                "../index.html#menu"
+            document.dispatchEvent(
+                new Event("spa-page-ready")
             );
-
         }
 
+        function showHome(updateHistory) {
+            removePageCss();
+            removePageScripts();
 
-        window.scrollTo({
-            top: 0,
-            behavior: "instant"
-        });
+            container.innerHTML = "";
 
+            if (home) {
+                container.appendChild(home);
+                home.style.display = "";
+                home.classList.add("home-visible");
+            }
 
-        currentPage =
-            window.location.pathname;
+            document.body.className = "";
+            document.title = "Para Brizly ♡";
 
-    }
-
-
-    /*
-     * ------------------------------------------------------------
-     * Cargar una página
-     * ------------------------------------------------------------
-     */
-
-    async function loadPage(
-        path,
-        pushState = true
-    ) {
-
-        /*
-         * HOME
-         */
-
-        if (
-            path === "/" ||
-            path === "index.html" ||
-            path === "/index.html"
-        ) {
-
-            showHome(
-                pushState
-            );
-
-            return;
-
-        }
-
-
-        /*
-         * Evitar tocar el audio.
-         *
-         * Estas referencias existen solamente para
-         * dejar explícito que son elementos permanentes.
-         */
-
-        void permanentAudio;
-        void permanentPlayer;
-
-
-        try {
-
-            const pageUrl =
-                new URL(
-                    path,
+            if (updateHistory) {
+                const target = new URL(
+                    "index.html#menu",
                     window.location.href
                 );
 
+                history.pushState({}, "", target.href);
+            }
 
-            const response =
-                await fetch(
-                    pageUrl.href,
+            window.scrollTo(0, 0);
+            updatePlayer();
+        }
+
+        async function loadPage(url, updateHistory = true) {
+            if (isHome(url)) {
+                showHome(updateHistory);
+                return;
+            }
+
+            try {
+                const response = await fetch(
+                    url.href,
                     {
-                        cache: "no-cache"
+                        method: "GET",
+                        cache: "no-store",
+                        credentials: "same-origin"
                     }
                 );
 
+                if (!response.ok) {
+                    throw new Error("HTTP " + response.status);
+                }
 
-            if (!response.ok) {
-
-                throw new Error(
-                    `HTTP ${response.status}`
-                );
-
-            }
-
-
-            const html =
-                await response.text();
-
-
-            const parser =
-                new DOMParser();
-
-
-            const doc =
-                parser.parseFromString(
+                const html = await response.text();
+                const doc = new DOMParser().parseFromString(
                     html,
                     "text/html"
                 );
 
+                loadPageCss(doc, url.href);
 
-            /*
-             * ----------------------------------------------------
-             * Preparar CSS
-             * ----------------------------------------------------
-             */
+                const fragment = document.createDocumentFragment();
 
-            loadPageStyles(
-                doc,
-                pageUrl.href
-            );
+                Array.from(doc.body.children).forEach(child => {
+                    if (
+                        child.matches(
+                            "audio, .love-music-player, script, .welcome-screen"
+                        )
+                    ) {
+                        return;
+                    }
 
+                    const clone = child.cloneNode(true);
+                    fixPaths(clone, url.href);
+                    fragment.appendChild(clone);
+                });
 
-            /*
-             * ----------------------------------------------------
-             * Preparar contenido
-             * ----------------------------------------------------
-             */
+                container.innerHTML = "";
+                container.appendChild(fragment);
 
-            const fragment =
-                document.createDocumentFragment();
-
-
-            const children =
-                Array.from(
-                    doc.body.children
-                );
-
-
-            children.forEach(child => {
-
-                /*
-                 * NO copiar:
-                 *
-                 * - reproductor
-                 * - audio
-                 * - scripts
-                 * - welcome screen
-                 */
-
-                if (
-                    child.matches(
-                        ".love-music-player"
-                    )
-                ) {
-
-                    return;
-
+                if (home) {
+                    home.style.display = "none";
                 }
 
+                document.body.className = doc.body.className || "";
 
-                if (
-                    child.matches(
-                        "audio"
-                    )
-                ) {
-
-                    return;
-
+                if (doc.title) {
+                    document.title = doc.title;
                 }
 
+                runPageScripts(doc);
 
-                if (
-                    child.matches(
-                        "script"
-                    )
-                ) {
-
-                    return;
-
+                if (updateHistory) {
+                    history.pushState({}, "", url.href);
                 }
 
+                window.scrollTo(0, 0);
+                updatePlayer();
 
-                if (
-                    child.matches(
-                        ".welcome-screen"
-                    )
-                ) {
+            } catch (error) {
+                console.error("Error cargando página:", error);
 
-                    return;
-
-                }
-
-
-                const clone =
-                    child.cloneNode(
-                        true
-                    );
-
-
-                fixPaths(
-                    clone,
-                    pageUrl.href
-                );
-
-
-                fragment.appendChild(
-                    clone
-                );
-
-            });
-
-
-            /*
-             * ----------------------------------------------------
-             * Reemplazar únicamente el contenido SPA
-             *
-             * El audio sigue fuera de aquí.
-             * ----------------------------------------------------
-             */
-
-            pageContainer.innerHTML = "";
-
-            pageContainer.appendChild(
-                fragment
-            );
-
-
-            /*
-             * El home ya no debe estar visible.
-             */
-
-            if (homeScreen) {
-
-                homeScreen.style.display =
-                    "none";
-
-            }
-
-
-            /*
-             * ----------------------------------------------------
-             * Actualizar body
-             * ----------------------------------------------------
-             */
-
-            document.body.className =
-                doc.body.className || "";
-
-
-            /*
-             * ----------------------------------------------------
-             * Título
-             * ----------------------------------------------------
-             */
-
-            if (doc.title) {
-
-                document.title =
-                    doc.title;
-
-            }
-
-
-            /*
-             * ----------------------------------------------------
-             * Ejecutar scripts propios de la página
-             * ----------------------------------------------------
-             */
-
-            runPageScripts(
-                doc
-            );
-
-
-            /*
-             * ----------------------------------------------------
-             * Historial
-             * ----------------------------------------------------
-             */
-
-            if (pushState) {
-
-                history.pushState(
-                    {},
-                    "",
-                    pageUrl.href
-                );
-
-            }
-
-
-            currentPage =
-                pageUrl.pathname;
-
-
-            /*
-             * ----------------------------------------------------
-             * Arriba de la página
-             * ----------------------------------------------------
-             */
-
-            window.scrollTo({
-                top: 0,
-                behavior: "instant"
-            });
-
-
-        } catch (error) {
-
-            console.error(
-                "Error cargando página:",
-                error
-            );
-
-
-            /*
-             * IMPORTANTE:
-             *
-             * No hacemos window.location.href.
-             *
-             * Eso destruiría el audio.
-             */
-
-            pageContainer.innerHTML = `
-
-                <section
-                    style="
+                container.innerHTML = `
+                    <section style="
                         min-height:60vh;
                         display:flex;
                         align-items:center;
                         justify-content:center;
                         padding:40px 20px;
                         text-align:center;
-                    "
-                >
-
-                    <div>
-
-                        <p
-                            style="
+                    ">
+                        <div>
+                            <p style="
                                 font-family:Georgia,serif;
                                 font-size:1.5rem;
                                 color:#f5dce5;
-                                margin-bottom:12px;
-                            "
-                        >
-                            No pude abrir esta página.
-                        </p>
+                                margin:0 0 12px;
+                            ">
+                                No pude abrir esta página.
+                            </p>
 
-                        <p
-                            style="
+                            <p style="
                                 color:rgba(255,255,255,.55);
-                                margin-bottom:24px;
-                            "
-                        >
-                            Revisa que el archivo exista
-                            dentro de la carpeta pages.
-                        </p>
+                                margin:0 0 24px;
+                            ">
+                                Comprueba que el archivo exista dentro de pages.
+                            </p>
 
-                        <button
-                            type="button"
-                            id="spa-error-home"
-                            style="
-                                padding:11px 18px;
-                                border-radius:30px;
-                                border:1px solid rgba(200,120,148,.35);
-                                background:rgba(128,62,85,.16);
-                                color:#fff;
-                                cursor:pointer;
-                            "
-                        >
-                            Volver al inicio
-                        </button>
+                            <button
+                                type="button"
+                                id="spa-error-home"
+                                style="
+                                    padding:11px 20px;
+                                    border-radius:30px;
+                                    border:1px solid rgba(200,120,148,.35);
+                                    background:rgba(128,62,85,.16);
+                                    color:#fff;
+                                    cursor:pointer;
+                                "
+                            >
+                                Volver al inicio
+                            </button>
+                        </div>
+                    </section>
+                `;
 
-                    </div>
+                const errorButton =
+                    document.getElementById("spa-error-home");
 
-                </section>
-
-            `;
-
-
-            const errorButton =
-                document.getElementById(
-                    "spa-error-home"
-                );
-
-
-            if (errorButton) {
-
-                errorButton.addEventListener(
-                    "click",
-                    () => {
-
-                        showHome(
-                            true
-                        );
-
-                    }
-                );
-
+                if (errorButton) {
+                    errorButton.addEventListener(
+                        "click",
+                        () => showHome(true)
+                    );
+                }
             }
-
         }
 
-    }
+        document.addEventListener(
+            "click",
+            event => {
+                const link =
+                    event.target.closest?.("a[href]");
 
-
-    /*
-     * ------------------------------------------------------------
-     * INTERCEPTAR CLICS
-     *
-     * Capture = true
-     *
-     * Esto es MUY importante porque script.js
-     * también tiene un sistema de navegación.
-     *
-     * Nosotros interceptamos primero.
-     * ------------------------------------------------------------
-     */
-
-    document.addEventListener(
-        "click",
-        event => {
-
-            const link =
-                event.target.closest(
-                    "a"
-                );
-
-
-            if (!link) {
-                return;
-            }
-
-
-            if (
-                event.ctrlKey ||
-                event.shiftKey ||
-                event.altKey ||
-                event.metaKey ||
-                event.button !== 0
-            ) {
-
-                return;
-
-            }
-
-
-            const href =
-                link.getAttribute(
-                    "href"
-                );
-
-
-            if (!href) {
-                return;
-            }
-
-
-            /*
-             * Enlaces externos.
-             */
-
-            if (
-                isExternalLink(
-                    href
-                )
-            ) {
-
-                return;
-
-            }
-
-
-            /*
-             * Anclas internas.
-             */
-
-            if (
-                isHashLink(
-                    href
-                )
-            ) {
-
-                return;
-
-            }
-
-
-            let url;
-
-            try {
-
-                url =
-                    getAbsoluteUrl(
-                        href
-                    );
-
-            } catch (error) {
-
-                return;
-
-            }
-
-
-            /*
-             * Solo manejar páginas HTML.
-             */
-
-            if (
-                !isPageLink(
-                    url
-                )
-            ) {
-
-                return;
-
-            }
-
-
-            /*
-             * HOME
-             */
-
-            if (
-                url.pathname.endsWith(
-                    "/index.html"
-                ) ||
-                url.pathname === "/"
-            ) {
-
-                event.preventDefault();
-                event.stopPropagation();
-
-                if (
-                    typeof event.stopImmediatePropagation ===
-                    "function"
-                ) {
-
-                    event.stopImmediatePropagation();
-
+                if (!link || isModifiedClick(event)) {
+                    return;
                 }
 
+                const href = link.getAttribute("href");
 
-                showHome(
-                    true
-                );
+                if (
+                    !href ||
+                    isExternal(href) ||
+                    isHash(href)
+                ) {
+                    return;
+                }
 
-                return;
+                const url = toUrl(href);
 
-            }
+                if (!url || !isPage(url)) {
+                    return;
+                }
 
-
-            /*
-             * PÁGINA INTERNA
-             */
-
-            event.preventDefault();
-            event.stopPropagation();
-
-            if (
-                typeof event.stopImmediatePropagation ===
-                "function"
-            ) {
-
+                event.preventDefault();
                 event.stopImmediatePropagation();
 
-            }
-
-
-            /*
-             * Convertir URL absoluta a ruta.
-             */
-
-            let path =
-                url.pathname;
-
-
-            if (url.search) {
-
-                path +=
-                    url.search;
-
-            }
-
-
-            loadPage(
-                path,
-                true
-            );
-
-        },
-        true
-    );
-
-
-    /*
-     * ------------------------------------------------------------
-     * BOTÓN ATRÁS / ADELANTE DEL NAVEGADOR
-     * ------------------------------------------------------------
-     */
-
-    window.addEventListener(
-        "popstate",
-        () => {
-
-            const path =
-                window.location.pathname;
-
-
-            if (
-                path.endsWith(
-                    "/index.html"
-                ) ||
-                path === "/"
-            ) {
-
-                showHome(
-                    false
-                );
-
-                return;
-
-            }
-
-
-            loadPage(
-                path,
-                false
-            );
-
-        }
-    );
-
-
-    /*
-     * ------------------------------------------------------------
-     * Inicialización
-     * ------------------------------------------------------------
-     */
-
-    /*
-     * Si estamos en index.html, dejamos el inicio visible.
-     */
-
-    const initialPath =
-        window.location.pathname;
-
-
-    if (
-        initialPath.endsWith(
-            "/index.html"
-        ) ||
-        initialPath === "/"
-    ) {
-
-        if (homeScreen) {
-
-            homeScreen.style.display =
-                "";
-
-            homeScreen.classList.add(
-                "home-visible"
-            );
-
-        }
-
-    }
-
-
-    /*
-     * ------------------------------------------------------------
-     * Verificación del audio
-     * ------------------------------------------------------------
-     */
-
-    if (!permanentAudio) {
-
-        console.warn(
-            "No se encontró #love-audio. " +
-            "La navegación SPA funciona, " +
-            "pero el reproductor no tiene audio permanente."
+                loadPage(url, true);
+            },
+            true
         );
 
+        window.addEventListener("popstate", () => {
+            loadPage(
+                new URL(window.location.href),
+                false
+            );
+        });
+
+        console.log("Sistema SPA inicializado.");
     }
 
-});
+    if (document.readyState === "loading") {
+        document.addEventListener(
+            "DOMContentLoaded",
+            init,
+            { once: true }
+        );
+    } else {
+        init();
+    }
+})();
